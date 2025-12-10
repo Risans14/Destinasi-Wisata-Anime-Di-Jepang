@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum Studio Ghibli – Mitaka</title>
+    <link rel="stylesheet" href="ghibli.css">
+    <style>
+        /* GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* PARALLAX BACKGROUND */
+        .parallax {
+            background-image: url("ghibli.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+
+        /* OVERLAY GELAP */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(20,20,20,0.6), rgba(0,0,0,0.85));
+            z-index: 0;
+        }
+
+        /* LAYOUT 2 KOLOM */
+        .destinasi-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 80px auto;
+            gap: 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* KOLOM KIRI — TEKS */
+        .text-box {
+            flex: 1;
+            padding: 30px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .text-box h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+        }
+
+        .text-box p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* TOMBOL KEMBALI */
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #006eff, #e100ff);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* KOLOM KANAN — FOTO */
+        .image-box-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .image-box-right img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .extra-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .extra-gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+            transition: transform 0.3s ease;
+        }
+
+        .extra-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 900px) {
+            .destinasi-wrapper {
+                flex-direction: column;
+            }
+
+            .image-box-right, .text-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACKSOUND AUTOPLAY -->
+    <audio id="bgm" loop>
+        <source src="ghibli.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        const bgm = document.getElementById("bgm");
+        bgm.volume = 0.7;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = 0;
+            overlay.style.left = 0;
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.zIndex = 9999;
+            overlay.style.cursor = 'pointer';
+            overlay.style.background = 'transparent';
+            overlay.title = 'Klik untuk memutar musik';
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('click', () => {
+                bgm.play();
+                document.body.removeChild(overlay);
+            });
+        });
+    </script>
+
+    <!-- PARALLAX BACKGROUND -->
+    <div class="parallax"></div>
+    <div class="overlay"></div>
+
+    <!-- LAYOUT 2 KOLOM -->
+    <div class="destinasi-wrapper">
+
+        <!-- KOLOM KIRI -->
+        <div class="text-box">
+            <h1>Museum Studio Ghibli – Mitaka</h1>
+
+            <p>
+                Museum Studio Ghibli di Mitaka, Tokyo, Jepang adalah tempat magis bagi penggemar film-film karya Hayao Miyazaki. 
+                Museum ini menampilkan koleksi artefak, model miniatur, dan ilustrasi asli dari berbagai film Ghibli, 
+                termasuk Totoro, Spirited Away, dan Howl’s Moving Castle.
+            </p>
+
+            <p>
+                Pengunjung dapat menjelajahi ruangan tematik, melihat animasi pendek eksklusif, dan menikmati arsitektur yang 
+                unik. Setiap sudut dirancang untuk memberi pengalaman yang imersif dan membawa pengunjung seakan masuk 
+                ke dalam dunia Ghibli yang memukau.
+            </p>
+
+            <h3>Pengalaman Ghibli Museum:</h3>
+            <p>
+                Museum menawarkan atraksi seperti ruangan replika rumah karakter, galeri seni, serta taman outdoor yang 
+                menyerupai latar film. Aktivitas interaktif termasuk miniatur animasi, spot foto ikonik, dan kafe tematik. 
+                Pengunjung dari segala usia akan merasakan suasana fantasi yang hangat, magis, dan inspiratif, seolah 
+                menjadi bagian dari dunia animasi yang dicintai banyak orang.
+            </p>
+            <!-- GAMBAR KECIL DI SISI KIRI (PERSIS SEPERTI DEMON SLAYER) -->
+<div class="left-small-image">
+    <img src="ghibli5.png" alt="Interior Museum Ghibli">
+    <p class="left-caption">Totoro</p>
+</div>
+
+
+            <a href="project.html" class="back-btn">Kembali</a>
+        </div>
+
+        <!-- KOLOM KANAN -->
+        <div class="image-box-right">
+            <img src="ghibli1.jpeg" alt="Museum Studio Ghibli Mitaka">
+            <div class="caption">Museum Studio Ghibli – Mitaka, Tokyo</div>
+
+            <div class="extra-gallery">
+                <img src="ghibli2.jpeg" alt="Miniatur Totoro">
+                <div class="caption">Miniatur Totoro</div>
+
+                <img src="ghibli3.jpeg" alt="Galeri Seni Ghibli">
+                <div class="caption">Galeri Seni dan Ilustrasi</div>
+
+                <img src="ghibli4.jpeg" alt="Taman Luar Museum">
+                <div class="caption">Taman Luar Museum yang Magis</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

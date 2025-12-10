@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Konoha – Taman Naruto</title>
+    <link rel="stylesheet" href="konoha.css">
+</head>
+<body>
+
+    <!-- BACKSOUND AUTOPLAY -->
+    <audio id="bgm" loop>
+        <source src="naruto.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        const bgm = document.getElementById("bgm");
+        bgm.volume = 1.00;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = 0;
+            overlay.style.left = 0;
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.zIndex = 9999;
+            overlay.style.cursor = 'pointer';
+            overlay.style.background = 'transparent';
+            overlay.title = 'Klik untuk memutar musik';
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('click', () => {
+                bgm.play();
+                document.body.removeChild(overlay);
+            });
+        });
+    </script>
+
+    <!-- PARALLAX BACKGROUND -->
+    <div class="parallax"></div>
+    <div class="overlay"></div>
+
+    <!-- LAYOUT 2 KOLOM -->
+    <div class="destinasi-wrapper">
+
+        <!-- KOLOM KIRI -->
+        <div class="text-box">
+            <h1>Desa Konoha – Taman Naruto</h1>
+
+            <p>
+                Desa Konoha yang ditampilkan di anime Naruto dihidupkan dalam bentuk taman hiburan di Jepang. 
+                Pengunjung dapat merasakan pengalaman dunia ninja secara nyata di beberapa lokasi, termasuk 
+                Fuji-Q Highland di Fujiyoshida, Prefektur Yamanashi, dan Nijigen No Mori di Pulau Awaji, Prefektur Hyogo. 
+                Taman ini menghadirkan replika Desa Konoha, wahana interaktif, serta area foto dengan karakter-karakter 
+                ikonik Naruto.
+            </p>
+
+            <p>
+                Pengunjung bisa mencoba aktivitas ninja seperti memanjat, menembakkan shuriken, atau berjalan melalui 
+                jalanan yang menyerupai Desa Konoha asli. Setiap sudut taman menghadirkan detail visual yang menarik 
+                dan suasana yang seru bagi seluruh anggota keluarga.
+            </p>
+
+            <h3>Sinopsis Naruto:</h3>
+            <p>
+                Naruto bercerita tentang seorang ninja muda bernama Naruto Uzumaki yang bercita-cita menjadi Hokage, 
+                pemimpin desa Konoha, agar diakui oleh semua orang. Cerita menampilkan petualangan, persahabatan, 
+                persaingan antar ninja, dan pertumbuhan karakter yang penuh tekad, pengorbanan, serta perjuangan melawan 
+                berbagai musuh untuk melindungi desanya.
+            </p>
+
+            <!-- FOTO TAMBAHAN DI KOLOM KIRI (BARU) -->
+            <img src="naruto.png" class="bottom-img" alt="Naruto">
+            <div class="bottom-caption">Naruto Uzumaki</div>
+
+            <a href="project.html" class="back-btn">Kembali</a>
+        </div>
+
+        <!-- KOLOM KANAN -->
+        <div class="image-box-right">
+            <img src="konoha1.jpg" alt="Desa Konoha Fuji-Q Highland">
+            <div class="caption">Desa Konoha – Fuji-Q Highland</div>
+
+            <div class="extra-gallery">
+                <img src="konoha2.jpg" alt="Wahana Ninja">
+                <div class="caption">Wahana Ninja Interaktif</div>
+
+                <img src="konoha3.jpg" alt="Karakter Naruto">
+                <div class="caption">Karakter Ikonik Naruto</div>
+
+                <img src="konoha4.jpg" alt="Jalanan Desa Konoha">
+                <div class="caption">Jalanan Desa Konoha Replika</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

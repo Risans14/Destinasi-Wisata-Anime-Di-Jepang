@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demon Slayer – Destinasi Jepang</title>
+    <link rel="stylesheet" href="demon.css">
+    <style>
+        /* GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* PARALLAX BACKGROUND */
+        .parallax {
+            background-image: url("demon.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+
+        /* OVERLAY GELAP */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(20,20,20,0.7), rgba(0,0,0,0.9));
+            z-index: 0;
+        }
+
+        /* LAYOUT 2 KOLOM */
+        .destinasi-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 80px auto;
+            gap: 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* KOLOM KIRI — TEKS */
+        .text-box {
+            flex: 1;
+            padding: 30px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .text-box h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+        }
+
+        .text-box p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* GAMBAR KECIL DI BAWAH SINOPSIS */
+        .small-image-box {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .small-image-box img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+        }
+
+        .small-caption {
+            margin-top: 6px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* TOMBOL KEMBALI */
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #000000, #06b900);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* KOLOM KANAN — FOTO */
+        .image-box-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .image-box-right img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .extra-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .extra-gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+            transition: transform 0.3s ease;
+        }
+
+        .extra-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 900px) {
+            .destinasi-wrapper {
+                flex-direction: column;
+            }
+
+            .image-box-right, .text-box {
+                width: 100%;
+            }
+
+            .small-image-box img {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACKSOUND AUTOPLAY RANDOM -->
+    <audio id="bgm" loop></audio>
+
+    <script>
+        const bgm = document.getElementById("bgm");
+        bgm.volume = 1.0;
+
+        const tracks = [
+            "demon.mp3",
+            "Zankyosanka.mp3"
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = 0;
+            overlay.style.left = 0;
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.zIndex = 9999;
+            overlay.style.cursor = 'pointer';
+            overlay.style.background = 'transparent';
+            overlay.title = 'Klik untuk memutar musik';
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('click', () => {
+                const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+                bgm.src = randomTrack;
+                bgm.play();
+                document.body.removeChild(overlay);
+            });
+        });
+    </script>
+
+    <!-- PARALLAX -->
+    <div class="parallax"></div>
+    <div class="overlay"></div>
+
+    <!-- LAYOUT -->
+    <div class="destinasi-wrapper">
+
+        <!-- KOLOM KIRI -->
+        <div class="text-box">
+            <h1>Demon Slayer – Destinasi Jepang</h1>
+
+            <p>
+                Destinasi Demon Slayer di Jepang membawa pengunjung merasakan langsung dunia Tanjiro dan para pemburu iblis. 
+                Lokasi wisata ini menampilkan latar alam yang asri dan menawan, yang menjadi inspirasi latar anime Demon Slayer, 
+                sehingga pengunjung seakan berada di pedesaan Jepang yang memesona sekaligus menegangkan.
+            </p>
+
+            <p>
+                Pengalaman utama termasuk menjelajahi Infinity Castle yang megah, menelusuri spot latihan pemburu iblis di kediaman 
+                Ubuyashiki, dan mencoba atraksi interaktif yang menampilkan pertarungan melawan iblis dengan efek visual dan suara 
+                yang memukau. Setiap sudut didesain sedetail mungkin agar pengunjung merasa seolah menjadi bagian dari Corps 
+                Pemburu Iblis.
+            </p>
+
+            <h3>Sinopsis Demon Slayer:</h3>
+            <p>
+                Demon Slayer menceritakan Tanjiro Kamado, seorang anak muda yang menjadi pemburu iblis setelah keluarganya dibantai 
+                dan adiknya, Nezuko, berubah menjadi iblis. Dalam perjalanannya, Tanjiro menghadapi berbagai tantangan, bertarung 
+                melawan iblis, dan belajar teknik pernapasan untuk melindungi manusia. Cerita ini menonjolkan keberanian, 
+                persahabatan, pengorbanan, serta tekad untuk menghadapi kegelapan, dengan latar Infinity Castle dan lokasi 
+                inspiratif lainnya menambah pengalaman visual yang menegangkan dan epik.
+            </p>
+
+            <!-- GAMBAR KECIL + CAPTION -->
+            <div class="small-image-box">
+                <img src="demon.png" alt="Demon Slayer Spot">
+                <div class="small-caption">Kamado Tanjiro</div>
+            </div>
+
+            <a href="project.html" class="back-btn">Kembali</a>
+        </div>
+
+        <!-- KOLOM KANAN -->
+        <div class="image-box-right">
+            <img src="demon.jpeg" alt="Destinasi Demon Slayer Jepang">
+            <div class="caption">Latar Alam Inspirasi Demon Slayer</div>
+
+            <div class="extra-gallery">
+                <img src="demon2.jpg" alt="Infinity Castle">
+                <div class="caption">Infinity Castle</div>
+
+                <img src="demon3.jpg" alt="Spot Latihan">
+                <div class="caption">Spot Latihan Pemburu Iblis</div>
+
+                <img src="demon4.jpg" alt="Festival Demon Slayer">
+                <div class="caption">Festival Bertema Demon Slayer</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

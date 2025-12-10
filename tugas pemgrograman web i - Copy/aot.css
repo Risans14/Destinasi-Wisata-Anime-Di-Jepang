@@ -1,0 +1,153 @@
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    color: white;
+    overflow-x: hidden;
+}
+
+/* PARALLAX BACKGROUND */
+.parallax {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+/* Background khusus AOT */
+.aot-bg {
+    background-image: url("aot1.jpg");
+}
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(20,20,20,0.7), rgba(0,0,0,0.9));
+    z-index: -1;
+}
+
+/* LAYOUT 2 KOLOM */
+.destinasi-wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 80px auto;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* KOLOM KIRI — TEKS */
+.text-box {
+    flex: 1;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+}
+
+.text-box h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+}
+
+.text-box p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* TOMBOL KEMBALI */
+.back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff3d3d, #ff7b00);
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+}
+
+/* KOLOM KANAN — FOTO */
+.image-box-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Foto utama */
+.image-box-right img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* Caption foto */
+.caption {
+    text-align: center; /* DIPINDAH KE TENGAH */
+    font-size: 14px;
+    color: #fff;
+    opacity: 0.9;
+}
+
+/* GALERI TAMBAHAN */
+.extra-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.extra-gallery img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease;
+}
+
+.extra-gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+    .destinasi-wrapper {
+        flex-direction: column;
+    }
+
+    .image-box-right, .text-box {
+        width: 100%;
+    }
+}
+
+/* FOTO TAMBAHAN DI BAWAH SINOPSIS (KECIL & DI KIRI) */
+.bottom-img {
+    width: 40%;
+    border-radius: 12px;
+    margin-top: 15px;
+    margin-left: 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+    display: block;
+}
+
+/* Caption Bawah */
+.caption {
+    text-align: center;  /* tetap di tengah */
+    font-size: 13px;
+    color: #444;
+}

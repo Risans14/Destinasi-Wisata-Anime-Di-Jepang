@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundam Factory – Yokohama</title>
+    <link rel="stylesheet" href="gundam.css">
+    <style>
+        /* GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* PARALLAX BACKGROUND */
+        .parallax {
+            background-image: url("gundam.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+
+        /* OVERLAY GELAP */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(20,20,20,0.6), rgba(0,0,0,0.85));
+            z-index: 0;
+        }
+
+        /* LAYOUT 2 KOLOM */
+        .destinasi-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 80px auto;
+            gap: 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* KOLOM KIRI — TEKS */
+        .text-box {
+            flex: 1;
+            padding: 30px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .text-box h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+        }
+
+        .text-box p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* TOMBOL KEMBALI */
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ff0000, #3700ff);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* KOLOM KANAN — FOTO */
+        .image-box-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .image-box-right img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .extra-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .extra-gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+            transition: transform 0.3s ease;
+        }
+
+        .extra-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 900px) {
+            .destinasi-wrapper {
+                flex-direction: column;
+            }
+
+            .image-box-right, .text-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACKSOUND AUTOPLAY -->
+    <audio id="bgm" loop>
+        <source src="gundam.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        const bgm = document.getElementById("bgm");
+        bgm.volume = 1.00;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = 0;
+            overlay.style.left = 0;
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.zIndex = 9999;
+            overlay.style.cursor = 'pointer';
+            overlay.style.background = 'transparent';
+            overlay.title = 'Klik untuk memutar musik';
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('click', () => {
+                bgm.play();
+                document.body.removeChild(overlay);
+            });
+        });
+    </script>
+
+    <!-- PARALLAX BACKGROUND -->
+    <div class="parallax"></div>
+    <div class="overlay"></div>
+
+    <!-- LAYOUT 2 KOLOM -->
+    <div class="destinasi-wrapper">
+
+        <!-- KOLOM KIRI -->
+        <div class="text-box">
+            <h1>Gundam Factory – Yokohama</h1>
+
+            <p>
+                Gundam Factory Yokohama menampilkan replika RX-0 Unicorn Gundam setinggi 18 meter yang dapat bergerak dan menampilkan efek cahaya. 
+                Tempat ini menjadi destinasi wisata futuristik dan inspiratif bagi penggemar mecha dan anime Gundam.
+            </p>
+
+            <p>
+                Pengunjung dapat menjelajahi area outdoor, melihat aksi Gundam secara langsung, serta menikmati galeri teknologi dan miniatur model Gundam. 
+                Suasana di sekitar pelabuhan Yokohama memberikan pengalaman imersif layaknya berada di dunia Gundam.
+            </p>
+
+            <h3>Pengalaman Gundam Factory:</h3>
+            <p>
+                Destinasi ini menghadirkan pertunjukan Gundam bergerak, spot foto ikonik di dekat patung, serta galeri interaktif yang menampilkan sejarah dan teknologi Gundam. 
+                Bagi penggemar anime dan robot, pengalaman ini menegangkan sekaligus memukau.
+            </p>
+
+            <a href="project.html" class="back-btn">Kembali</a>
+        </div>
+
+        <!-- KOLOM KANAN -->
+        <div class="image-box-right">
+            <img src="gundam1.jpeg" alt="Gundam Factory Yokohama">
+            <div class="caption">RX-0 Unicorn Gundam Bergerak</div>
+
+            <div class="extra-gallery">
+                <img src="gundam2.jpeg" alt="Gundam Light Show">
+                <div class="caption">Pertunjukan Cahaya Gundam</div>
+
+                <img src="gundam3.jpg" alt="Miniatur Model Gundam">
+                <div class="caption">Miniatur dan Galeri Gundam</div>
+
+                <img src="gundam4.jpg" alt="Spot Foto Pelabuhan">
+                <div class="caption">Spot Foto Ikonik di Pelabuhan Yokohama</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
