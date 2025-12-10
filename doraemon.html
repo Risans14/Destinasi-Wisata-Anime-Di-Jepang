@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum Doraemon – Kawasaki</title>
+    <link rel="stylesheet" href="doraemon.css">
+    <style>
+        /* GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* PARALLAX BACKGROUND */
+        .parallax {
+            background-image: url("doraemon.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+
+        /* OVERLAY GELAP */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(20,20,20,0.6), rgba(0,0,0,0.85));
+            z-index: 0;
+        }
+
+        /* LAYOUT 2 KOLOM */
+        .destinasi-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 80px auto;
+            gap: 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* KOLOM KIRI — TEKS */
+        .text-box {
+            flex: 1;
+            padding: 30px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .text-box h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+        }
+
+        .text-box p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* TOMBOL KEMBALI */
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #0515f8, #00ccff);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* KOLOM KANAN — FOTO */
+        .image-box-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .image-box-right img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .extra-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .extra-gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+            transition: transform 0.3s ease;
+        }
+
+        .extra-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 900px) {
+            .destinasi-wrapper {
+                flex-direction: column;
+            }
+
+            .image-box-right, .text-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACKSOUND AUTOPLAY -->
+    <audio id="bgm" loop>
+        <source src="doraemon.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        const bgm = document.getElementById("bgm");
+        bgm.volume = 1.00;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = 0;
+            overlay.style.left = 0;
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.zIndex = 9999;
+            overlay.style.cursor = 'pointer';
+            overlay.style.background = 'transparent';
+            overlay.title = 'Klik untuk memutar musik';
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('click', () => {
+                bgm.play();
+                document.body.removeChild(overlay);
+            });
+        });
+    </script>
+
+    <!-- PARALLAX BACKGROUND -->
+    <div class="parallax"></div>
+    <div class="overlay"></div>
+
+    <!-- LAYOUT 2 KOLOM -->
+    <div class="destinasi-wrapper">
+
+        <!-- KOLOM KIRI -->
+        <div class="text-box">
+            <h1>Museum Doraemon – Kawasaki</h1>
+
+            <p>
+                Museum Doraemon di Kawasaki, Jepang adalah surga bagi penggemar kucing biru futuristik ini. 
+                Museum ini menampilkan koleksi artefak, model replika alat-alat canggih Doraemon, serta animasi eksklusif.
+            </p>
+
+            <p>
+                Pengunjung dapat menjelajahi ruangan tematik, bermain dengan replika alat Doraemon, dan menikmati arsitektur museum yang ramah anak. 
+                Setiap sudut dirancang untuk membawa pengunjung ke dunia Doraemon yang penuh imajinasi dan kreatifitas.
+            </p>
+
+            <h3>Pengalaman Museum Doraemon:</h3>
+            <p>
+                Atraksi termasuk zona interaktif, mini teater dengan animasi pendek, galeri seni, serta spot foto ikonik. 
+                Anak-anak dan penggemar semua usia bisa merasakan sensasi petualangan bersama Doraemon dan Nobita, serta belajar 
+                tentang kreativitas dan inovasi melalui alat-alat futuristik.
+            </p>
+
+            <a href="project.html" class="back-btn">Kembali</a>
+        </div>
+
+        <!-- KOLOM KANAN -->
+        <div class="image-box-right">
+            <img src="doraemon1.jpeg" alt="Museum Doraemon Kawasaki">
+            <div class="caption">Museum Doraemon – Kawasaki</div>
+
+            <div class="extra-gallery">
+                <img src="doraemon2.jpeg" alt="Replika Alat Doraemon">
+                <div class="caption">Replika Alat Canggih Doraemon</div>
+
+                <img src="doraemon3.jpg" alt="Mini Teater">
+                <div class="caption">Mini Teater Animasi Pendek</div>
+
+                <img src="doraemon5.jpeg" alt="Zona Interaktif">
+                <div class="caption">Zona Interaktif dan Spot Foto</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

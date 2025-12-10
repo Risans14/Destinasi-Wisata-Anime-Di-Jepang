@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack on Titan – Museum HITA</title>
+    <link rel="stylesheet" href="aot.css">
+
+    <style>
+        /* PARALLAX BACKGROUND */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .parallax {
+            background-image: url('aot1.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(20,20,20,0.7), rgba(0,0,0,0.9));
+            z-index: 0;
+        }
+
+        .destinasi-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 80px auto;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .text-box {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .text-box h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .text-box p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* FOTO TAMBAHAN DI BAWAH SINOPSIS */
+        .bottom-img {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+        }
+
+        .caption {
+            background: rgba(0,0,0,0.6);
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 5px;
+            width: fit-content;
+
+            /* SATU-SATUNYA PENAMBAHAN UNTUK MEMINDAHKAN TENGAH */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #f8aa00, #06a500);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .image-box-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .image-box-right img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .extra-gallery img {
+            width: 100%;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PARALLAX BACKGROUND -->
+    <div class="parallax"></div>
+
+    <!-- OVERLAY GELAP -->
+    <div class="overlay"></div>
+
+    <!-- BACKSOUND -->
+    <audio id="bgm" loop></audio>
+
+    <!-- LAYOUT 2 KOLOM -->
+    <div class="destinasi-wrapper">
+        
+        <!-- KOLOM KIRI -->
+        <div class="text-box">
+            <h1>Attack on Titan – Museum HITA</h1>
+
+            <p>
+                Museum di Hita, Prefektur Oita, adalah tempat lahirnya Hajime Isayama, kreator manga dan anime fenomenal
+                Attack on Titan. Museum ini tidak hanya menampilkan koleksi visual yang memukau, tetapi juga menjadi
+                titik pertemuan antara penggemar anime dan sejarah kreatif di balik dunia Titan yang menegangkan.
+            </p>
+
+            <p>
+                Di dalam museum, pengunjung dapat menjelajahi berbagai ruangan tematik yang menghadirkan patung-patung
+                karakter ikonik seperti Eren Yeager, Mikasa Ackerman, dan Armin Arlert. Setiap area dipenuhi dengan
+                sketsa asli, konsep awal, dan replika tembok “The Wall” yang melindungi manusia dari serangan Titan.
+                Diorama pertempuran paling ikonik juga ditampilkan secara detail, memberi pengalaman yang sangat imersif.
+            </p>
+
+            <p>
+                Museum ini juga menekankan sejarah pembuatan seri, mulai dari ide awal Hajime Isayama hingga adaptasi
+                anime yang mendunia. Pengunjung dapat mempelajari teknik menggambar, desain karakter, serta proses
+                pengembangan dunia yang kompleks dan penuh misteri.
+            </p>
+
+            <h3>Sinopsis Attack on Titan:</h3>
+
+            <p>
+                Attack on Titan bercerita tentang umat manusia yang hidup dalam tembok raksasa untuk melindungi diri dari
+                serangan para Titan. Cerita mengikuti Eren Yeager, Mikasa Ackerman, dan Armin Arlert dalam perjuangan
+                menghadapi ancaman Titan dan mengungkap misteri dunia.
+            </p>
+
+            <!-- FOTO DI BAWAH SINOPSIS -->
+            <img src="aot5.png" class="bottom-img" alt="Mikasa">
+            <div class="caption">Mikasa Ackerman</div>
+
+            <a href="project.html" class="back-btn">Kembali</a>
+        </div>
+
+        <!-- KOLOM KANAN -->
+        <div class="image-box-right">
+            <img src="aot.jpg" alt="Attack on Titan Museum HITA">
+            <div class="caption">Zona Attack on Titan — Museum HITA, Oita</div>
+
+            <div class="extra-gallery">
+                <img src="aot2.jpg" alt="Patung Eren Yeager HITA">
+                <div class="caption">Patung Eren Yeager HITA</div>
+
+                <img src="aot3.jpg" alt="Sketsa Attack on Titan">
+                <div class="caption">Sketsa Attack on Titan</div>
+
+                <img src="aot4.png" alt="Wahana Attack on Titan Museum">
+                <div class="caption">Wahana Attack on Titan Museum</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script autoplay dengan klik overlay + lagu acak -->
+    <script>
+        const bgm = document.getElementById("bgm");
+        bgm.volume = 1.00;
+
+        const tracks = ["aot.mp3", "aot2.mp3"];
+        const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+        bgm.src = randomTrack;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = 0;
+            overlay.style.left = 0;
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.zIndex = 9999;
+            overlay.style.cursor = 'pointer';
+            overlay.style.background = 'transparent';
+            overlay.title = 'Klik untuk memutar musik';
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('click', () => {
+                bgm.play();
+                document.body.removeChild(overlay);
+            });
+        });
+    </script>
+
+</body>
+</html>

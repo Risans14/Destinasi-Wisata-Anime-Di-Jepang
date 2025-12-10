@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wisata Anime Jepang</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- STYLE -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* GLOBAL */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* PARALLAX BACKGROUND */
+    .bg-parallax {
+      background: url("jepang.jpg") center/cover no-repeat fixed;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      filter: brightness(0.7);
+    }
+
+    /* HEADER */
+    header {
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(78,85,255,0.48), rgba(166,54,255,0.48));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* LOGO IMAGE */
+    .logo-jpg img {
+      width: 75px;
+      height: 75px;
+      object-fit: cover; 
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    /* GRID */
+    .container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 25px;
+      padding: 30px;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      background: rgba(255,255,255,0.12);
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(20px);
+      height: 540px;
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .dest-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .dest-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: linear-gradient(135deg, rgba(111,66,193,0.4), rgba(67,97,238,0.4));
+      border-radius: 12px;
+      color: white;
+      text-decoration: none;
+      transition: 0.25s;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .dest-item:hover {
+      transform: translateX(8px) scale(1.03);
+      background: linear-gradient(135deg, rgba(140,82,255,0.55), rgba(76,110,245,0.55));
+    }
+
+    .thumb {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #ff6bcb, #ff4f81);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    /* SHOWCASE */
+    .showcase {
+      position: relative;
+      padding-top: 35px;
+    }
+
+    .welcome-title {
+      text-align: center;
+      color: #fff;
+      font-size: 50px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      animation: fadeDown 1s ease;
+    }
+
+    .romaji-title {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 5px;
+      color: #f1f1f1;
+      opacity: 0.85;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CONTENT BOX */
+    .inner-box {
+      background: rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 35px;
+      border-radius: 30px;
+      color: #ffffff;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+
+    .inner-box p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<!-- BACKSOUND -->
+<audio id="bgm" loop>
+  <source src="Tabun.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  const bgm = document.getElementById("bgm");
+  bgm.volume = 0.55;
+  bgm.style.display = "none";
+  // play after first click
+  document.addEventListener('click', () => {
+      if(bgm.paused) bgm.play();
+  }, {once: true});
+</script>
+
+<!-- PARALLAX BACKGROUND -->
+<div class="bg-parallax"></div>
+
+<header>
+  <div class="brand">
+    <div class="logo-jpg">
+      <img src="aot2.png" alt="Logo Wisata Anime">
+    </div>
+    <div>
+      <h1>Destinasi Wisata Anime Di Jepang</h1>
+      <div class="tag">Klik destinasi untuk membuka halaman baru</div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h3>Daftar Destinasi</h3>
+    <div class="dest-list">
+      <a href="aot.html" class="dest-item"><div class="thumb">1</div> Attack on Titan — Museum HITA</a>
+      <a href="konoha.html" class="dest-item"><div class="thumb">2</div> Desa Konoha</a>
+      <a href="demon.html" class="dest-item"><div class="thumb">3</div> Demon Slayer</a>
+      <a href="ghibli.html" class="dest-item"><div class="thumb">4</div> Museum Ghibli</a>
+      <a href="suga.html" class="dest-item"><div class="thumb">5</div> Suga Shrine — Your Name</a>
+      <a href="gundam.html" class="dest-item"><div class="thumb">6</div> Gundam Factory</a>
+      <a href="doraemon.html" class="dest-item"><div class="thumb">7</div> Museum Doraemon</a>
+    </div>
+  </aside>
+
+  <!-- MAIN SHOWCASE -->
+  <section class="showcase">
+    <h2 class="welcome-title">Selamat Datang di Website!</h2>
+    <p class="romaji-title">ようこそ、私たちのウェブサイトへ</p>
+    <p class="romaji-title">(Youkoso, watashitachi no webusaito e)</p>
+
+    <div class="inner-box">
+      <p>
+        Website ini dibuat untuk membawa pengunjung merasakan pengalaman wisata Jepang melalui sudut pandang dunia anime. Setiap destinasi yang ditampilkan terinspirasi dari lokasi nyata yang muncul dalam anime terkenal, mulai dari Attack on Titan, Naruto, Demon Slayer, hingga karya Studio Ghibli.
+      </p>
+      <p>
+        Selain informasi tempat wisata, setiap halaman destinasi dilengkapi dengan gambar, deskripsi singkat, serta backsound tema yang memperkuat suasana sesuai animenya. Website ini cocok bagi penggemar anime maupun wisatawan yang ingin menemukan referensi perjalanan unik di Jepang.
+      </p>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
