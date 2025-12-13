@@ -15,7 +15,7 @@
 
         body {
             background: linear-gradient(rgba(20, 10, 0, 0.85), rgba(40, 20, 5, 0.9)), 
-                        url('https://images.unsplash.com/photo-1550684848-86a5d8727436?q=80&w=2070') no-repeat center center fixed;
+                        url('aot1.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             min-height: 100vh;
@@ -158,7 +158,7 @@
             }
         }
 
-        /* Karakter utama (kiri) */
+        /* Karakter utama (kiri) - SINPOSIS TEXT */
         .main-character {
             flex: 1;
             min-width: 300px;
@@ -220,7 +220,7 @@
             color: #e0e0e0;
         }
 
-        /* 4 Museum samping (kanan) */
+        /* 4 Foto samping (kanan) - GALERI FOTO */
         .side-locations {
             flex: 1;
             min-width: 300px;
@@ -331,51 +331,25 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Sinopsis section */
-        .synopsis {
-            background: rgba(20, 10, 5, 0.8);
-            border-radius: 20px;
-            padding: 40px;
-            margin-top: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            border-left: 5px solid #ff6400;
-            animation: slideInRight 1.5s ease-out;
+        /* Foto di bawah sinopsis */
+        .bottom-img {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35);
         }
 
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: #ff9966;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .section-title i {
-            font-size: 2rem;
-        }
-
-        .synopsis-text {
-            line-height: 1.8;
-            font-size: 1.1rem;
-            color: #f0f0f0;
-            text-align: justify;
-        }
-
-        .highlight {
-            color: #ffcc00;
-            font-weight: bold;
+        .caption {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 5px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Tombol audio mini tersembunyi */
@@ -462,7 +436,7 @@
                 height: 35px;
             }
             
-            .character-name, .section-title {
+            .character-name {
                 font-size: 1.8rem;
             }
             
@@ -490,108 +464,120 @@
         </header>
 
         <div class="main-content">
-            <!-- Karakter utama (kiri) -->
+            <!-- SINOPSIS TEXT (kiri) -->
             <div class="main-character">
                 <div class="character-card">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Eren Yeager" class="character-img">
-                    <div class="location-caption">"Jika seseorang mencoba mengambil kebebasanku... Aku tidak akan ragu untuk mengambil kebebasan mereka." - Eren Yeager</div>
                     <div class="character-info">
-                        <h2 class="character-name">Eren Yeager</h2>
-                        <p class="character-title">Pemilik Attack Titan - Survey Corps</p>
+                        <h1>Attack on Titan – Museum HITA</h1>
+
                         <p class="character-desc">
-                            Protagonis utama Attack on Titan yang bertekad untuk membebaskan umat manusia dari ancaman Titan. 
-                            Lahir di distrik Shiganshina, Eren menyaksikan kematian ibunya di tangan Titan, menjadi motivasi utamanya 
-                            untuk membasmi semua Titan dan mengungkap misteri dunia di luar tembok.
+                            Museum di Hita, Prefektur Oita, adalah tempat lahirnya Hajime Isayama, kreator manga dan anime fenomenal
+                            Attack on Titan. Museum ini tidak hanya menampilkan koleksi visual yang memukau, tetapi juga menjadi
+                            titik pertemuan antara penggemar anime dan sejarah kreatif di balik dunia Titan yang menegangkan.
                         </p>
+
+                        <p class="character-desc">
+                            Di dalam museum, pengunjung dapat menjelajahi berbagai ruangan tematik yang menghadirkan patung-patung
+                            karakter ikonik seperti Eren Yeager, Mikasa Ackerman, dan Armin Arlert. Setiap area dipenuhi dengan
+                            sketsa asli, konsep awal, dan replika tembok "The Wall" yang melindungi manusia dari serangan Titan.
+                            Diorama pertempuran paling ikonik juga ditampilkan secara detail, memberi pengalaman yang sangat imersif.
+                        </p>
+
+                        <p class="character-desc">
+                            Museum ini juga menekankan sejarah pembuatan seri, mulai dari ide awal Hajime Isayama hingga adaptasi
+                            anime yang mendunia. Pengunjung dapat mempelajari teknik menggambar, desain karakter, serta proses
+                            pengembangan dunia yang kompleks dan penuh misteri.
+                        </p>
+
+                        <h3>Sinopsis Attack on Titan:</h3>
+
+                        <p class="character-desc">
+                            Attack on Titan bercerita tentang umat manusia yang hidup dalam tembok raksasa untuk melindungi diri dari
+                            serangan para Titan. Cerita mengikuti Eren Yeager, Mikasa Ackerman, dan Armin Arlert dalam perjuangan
+                            menghadapi ancaman Titan dan mengungkap misteri dunia.
+                        </p>
+
+                        <!-- FOTO DI BAWAH SINOPSIS -->
+                        <img src="eren2.jpg" class="bottom-img" alt="Eren Yeager">
+                        <div class="caption">Eren Yeager</div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4 Lokasi samping (kanan) -->
+            <!-- 4 Foto samping (kanan) - GALERI -->
             <div class="side-locations">
-                <!-- Museum HITA -->
+                <!-- Foto 1: Museum HITA -->
                 <div class="location-card">
                     <div class="location-img-container">
-                        <span class="location-badge">Utama</span>
-                        <img src="https://images.unsplash.com/photo-1551645120-d70bf3b6d0ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Museum HITA" class="location-img">
+                        <span class="location-badge">Museum</span>
+                        <img src="aot.jpg" alt="Attack on Titan Museum HITA" class="location-img">
                     </div>
                     <div class="location-info">
                         <h3 class="location-name"><i class="fas fa-landmark"></i> Museum HITA</h3>
                         <p class="location-desc">
-                            Museum di <span class="location-highlight">Hita, Prefektur Oita</span>, tempat kelahiran Hajime Isayama, 
-                            kreator Attack on Titan. Museum ini menjadi pusat koleksi karya asli, sketsa, dan memorabilia seri.
+                            Zona Attack on Titan — Museum HITA, Oita. Tempat lahirnya legenda Attack on Titan.
                         </p>
                     </div>
-                    <div class="location-caption">Lahirnya legenda Attack on Titan - Hometown Hajime Isayama</div>
+                    <div class="location-caption">Zona Attack on Titan — Museum HITA, Oita</div>
                 </div>
                 
-                <!-- Sketsa Asli -->
+                <!-- Foto 2: Patung Eren -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Patung</span>
+                        <img src="aot2.jpg" alt="Patung Eren Yeager HITA" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-monument"></i> Patung Eren</h3>
+                        <p class="location-desc">
+                            Patung Eren Yeager di Museum HITA, menggambarkan karakter utama dalam pose ikonik.
+                        </p>
+                    </div>
+                    <div class="location-caption">Patung Eren Yeager HITA</div>
+                </div>
+                
+                <!-- Foto 3: Sketsa -->
                 <div class="location-card">
                     <div class="location-img-container">
                         <span class="location-badge">Koleksi</span>
-                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Sketsa Asli" class="location-img">
+                        <img src="aot3.jpg" alt="Sketsa Attack on Titan" class="location-img">
                     </div>
                     <div class="location-info">
                         <h3 class="location-name"><i class="fas fa-pencil-alt"></i> Sketsa Asli</h3>
                         <p class="location-desc">
-                            Area khusus yang menampilkan <span class="location-highlight">sketsa asli</span> dari manga Attack on Titan, 
-                            termasuk konsep karakter awal dan desain Titan yang belum pernah dipublikasikan sebelumnya.
+                            Koleksi sketsa asli Hajime Isayama yang menampilkan proses kreatif pembuatan manga.
                         </p>
                     </div>
-                    <div class="location-caption">Koleksi sketsa asli Hajime Isayama - Proses kreatif yang menakjubkan</div>
+                    <div class="location-caption">Sketsa Attack on Titan</div>
                 </div>
                 
-                <!-- Diorama Tembok -->
+                <!-- Foto 4: Wahana -->
                 <div class="location-card">
                     <div class="location-img-container">
-                        <span class="location-badge">Ekshibisi</span>
-                        <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Diorama Tembok" class="location-img">
+                        <span class="location-badge">Wahana</span>
+                        <img src="aot4.png" alt="Wahana Attack on Titan Museum" class="location-img">
                     </div>
                     <div class="location-info">
-                        <h3 class="location-name"><i class="fas fa-chess-board"></i> Diorama Tembok</h3>
+                        <h3 class="location-name"><i class="fas fa-chess-board"></i> Wahana Interaktif</h3>
                         <p class="location-desc">
-                            Replika detail <span class="location-highlight">tiga tembok raksasa</span> (Maria, Rose, Sina) 
-                            dengan skala 1:100, dilengkapi dengan patung Survey Corps dan scene pertempuran ikonik.
+                            Wahana dan diorama interaktif yang membawa pengunjung masuk ke dunia Attack on Titan.
                         </p>
                     </div>
-                    <div class="location-caption">Replika tiga tembok - Maria, Rose, dan Sina dalam skala menakjubkan</div>
-                </div>
-                
-                <!-- Studio Isayama -->
-                <div class="location-card">
-                    <div class="location-img-container">
-                        <span class="location-badge">Studio</span>
-                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Studio Isayama" class="location-img">
-                    </div>
-                    <div class="location-info">
-                        <h3 class="location-name"><i class="fas fa-desktop"></i> Studio Replika</h3>
-                        <p class="location-desc">
-                            Replika studio kerja <span class="location-highlight">Hajime Isayama</span> yang menunjukkan 
-                            bagaimana mangaka legendaris ini menciptakan dunia Attack on Titan selama 11 tahun.
-                        </p>
-                    </div>
-                    <div class="location-caption">Replika studio Hajime Isayama - Tempat lahirnya masterpiece</div>
+                    <div class="location-caption">Wahana Attack on Titan Museum</div>
                 </div>
             </div>
         </div>
 
-        <!-- Sinopsis Section -->
-        <div class="synopsis">
-            <h2 class="section-title"><i class="fas fa-scroll"></i> Museum HITA - Warisan Attack on Titan</h2>
-            <p class="synopsis-text">
-                <span class="highlight">Museum HITA</span> di Prefektur Oita tidak hanya sekadar museum biasa, tetapi sebuah 
-                <span class="highlight">monumen hidup</span> yang merayakan warisan salah satu seri manga dan anime terbesar sepanjang masa. 
-                Lahir dari visi untuk melestarikan karya Hajime Isayama, museum ini menjadi tujuan ziarah bagi jutaan penggemar Attack on Titan di seluruh dunia.
-                <br><br>
-                Museum ini menampilkan <span class="highlight">koleksi eksklusif</span> yang mencakup sketsa asli bab pertama, desain karakter awal, 
-                dan konsep Titan yang belum pernah terlihat sebelumnya. Pengunjung dapat menyaksikan <span class="highlight">evolusi kreatif</span> 
-                Isayama dari ide awal hingga masterpiece akhir yang mengubah landscape anime modern.
-                <br><br>
-                Selain koleksi seni, museum juga menampilkan <span class="highlight">diorama interaktif</span> yang mengangkat momen-momen ikonik 
-                dari seri, termasuk Pertempuran Trost, Penyerangan Shiganshina, dan pengejaran di Hutan Raksasa. 
-                Setiap area dirancang untuk menciptakan pengalaman <span class="highlight">immersive</span> yang membawa pengunjung langsung ke dalam dunia Attack on Titan.
+        <!-- Footer dengan credit -->
+        <footer>
+            <div class="aot-stamp">
+                <i class="fas fa-chess-rook"></i>
+            </div>
+            <p>Attack on Titan Museum HITA © 2025 | Destinasi Ziarah Penggemar Shingeki no Kyojin</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; color: #d0b0a0;">
+                <i class="fas fa-music"></i> Backsound diputar otomatis | Klik ikon speaker di pojok kanan bawah untuk mute/unmute
             </p>
-        </div>
+        </footer>
     </div>
 
     <!-- Tombol audio mini tersembunyi (hanya ikon kecil) -->
@@ -599,22 +585,11 @@
         <i class="fas fa-volume-up" id="audioIcon"></i>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="aot-stamp">
-            <i class="fas fa-chess-rook"></i>
-        </div>
-        <p>Attack on Titan Museum HITA © 2025 | Destinasi Ziarah Penggemar Shingeki no Kyojin</p>
-        <p style="margin-top: 10px; font-size: 0.8rem; color: #d0b0a0;">
-            <i class="fas fa-music"></i> Backsound diputar otomatis | Klik ikon speaker di pojok kanan bawah untuk mute/unmute
-        </p>
-    </footer>
-
     <!-- Audio untuk backsound (tersembunyi) -->
     <audio id="backgroundAudio" loop autoplay>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-epic-action-trailer-276.mp3" type="audio/mpeg">
-        <source src="https://assets.mixkit.co/music/preview/mixkit-intense-epic-trailer-276.mp3" type="audio/mpeg">
-        <source src="https://assets.mixkit.co/music/preview/mixkit-deep-urban-623.mp3" type="audio/mpeg">
+        <!-- Sumber audio dari kode asli -->
+        <source src="aot.mp3" type="audio/mpeg">
+        <source src="aot2.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -627,24 +602,19 @@
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
-                // Ukuran acak
                 const size = Math.random() * 20 + 5;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 
-                // Posisi acak
                 particle.style.left = `${Math.random() * 100}%`;
                 particle.style.top = `${Math.random() * 100}%`;
                 
-                // Warna acak dengan tema AOT
                 const colors = ['rgba(255, 100, 0, 0.5)', 'rgba(139, 0, 0, 0.5)', 'rgba(100, 50, 0, 0.5)'];
                 particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 
-                // Animasi dengan durasi acak
                 const duration = Math.random() * 20 + 10;
                 particle.style.animationDuration = `${duration}s`;
                 
-                // Delay acak
                 const delay = Math.random() * 5;
                 particle.style.animationDelay = `${delay}s`;
                 
@@ -652,41 +622,59 @@
             }
         }
 
-        // Kontrol audio TERSEMBUNYI
+        // Kontrol audio - SISTEM SAMA DENGAN KODE ASLI
         const audio = document.getElementById('backgroundAudio');
         const audioToggle = document.getElementById('audioToggle');
         const audioIcon = document.getElementById('audioIcon');
         
-        // Atur volume default
-        audio.volume = 0.5;
+        // Atur volume default dan random track seperti kode asli
+        audio.volume = 1.00;
+        
+        // Pilih lagu secara acak seperti kode asli
+        const tracks = ["aot.mp3", "aot2.mp3"];
+        const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+        audio.src = randomTrack;
         
         // Status audio awal
         let isAudioPlaying = true;
         
-        // Fungsi untuk mencoba memutar audio
-        function tryPlayAudio() {
-            if (audio.paused) {
+        // Fungsi untuk mencoba memutar audio dengan sistem overlay klik
+        function initializeAudio() {
+            // Buat overlay transparan untuk klik pertama
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.zIndex = '9999';
+            overlay.style.cursor = 'pointer';
+            overlay.style.background = 'transparent';
+            overlay.title = 'Klik untuk memutar musik';
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('click', () => {
+                // Coba putar audio
                 const playPromise = audio.play();
                 
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
-                        console.log("Audio berhasil diputar otomatis");
+                        console.log("Audio berhasil diputar");
                         isAudioPlaying = true;
                         audioIcon.className = 'fas fa-volume-up';
+                        audioToggle.title = "Klik untuk mute audio";
                     }).catch(error => {
-                        console.log("Autoplay diblokir browser");
+                        console.log("Autoplay diblokir");
                         isAudioPlaying = false;
                         audioIcon.className = 'fas fa-volume-mute';
                         audioToggle.title = "Klik untuk memutar audio (autoplay diblokir)";
                     });
                 }
-            }
+                
+                // Hapus overlay setelah klik
+                document.body.removeChild(overlay);
+            });
         }
-        
-        // Coba putar audio saat halaman dimuat
-        window.addEventListener('load', function() {
-            setTimeout(tryPlayAudio, 500);
-        });
         
         // Event listener untuk toggle audio mini
         audioToggle.addEventListener('click', function() {
@@ -703,7 +691,7 @@
             }
         });
         
-        // Efek hover untuk kartu lokasi
+        // Efek hover untuk kartu foto
         document.querySelectorAll('.location-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.03) translateY(-10px)';
@@ -717,22 +705,7 @@
         // Inisialisasi saat halaman dimuat
         window.onload = function() {
             createParticles();
-            
-            // Efek tipe untuk sinopsis
-            const synopsisText = document.querySelector('.synopsis-text');
-            const originalText = synopsisText.textContent;
-            synopsisText.textContent = '';
-            
-            let i = 0;
-            function typeWriter() {
-                if (i < originalText.length) {
-                    synopsisText.textContent += originalText.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 10);
-                }
-            }
-            
-            setTimeout(typeWriter, 1000);
+            initializeAudio(); // Inisialisasi sistem audio
             
             // Efek badge berkedip
             setInterval(() => {
@@ -758,7 +731,9 @@
         // Deteksi interaksi pengguna untuk audio
         document.addEventListener('click', function() {
             if (audio.paused && !isAudioPlaying) {
-                tryPlayAudio();
+                audio.play();
+                isAudioPlaying = true;
+                audioIcon.className = 'fas fa-volume-up';
             }
         });
     </script>
