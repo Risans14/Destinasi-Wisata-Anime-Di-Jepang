@@ -63,6 +63,43 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 30px;
+            padding-top: 100px; /* Memberi ruang untuk tombol kembali */
+        }
+
+        /* Tombol Kembali ke Home */
+        .back-home {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, rgba(255, 0, 128, 0.8), rgba(128, 0, 255, 0.8));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-home:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 0, 128, 0.4);
+            background: linear-gradient(135deg, rgba(255, 50, 150, 0.9), rgba(150, 50, 255, 0.9));
+        }
+
+        .back-home i {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .back-home:hover i {
+            transform: translateX(-5px);
         }
 
         /* Header dengan animasi */
@@ -350,11 +387,6 @@
             font-weight: bold;
         }
 
-        /* Kontrol audio TERSEMBUNYI */
-        .audio-controls {
-            display: none; /* Kontrol disembunyikan */
-        }
-
         /* Tombol audio mini tersembunyi */
         .audio-mini-toggle {
             position: fixed;
@@ -411,11 +443,25 @@
             .main-content {
                 flex-direction: column;
             }
+            
+            .back-home {
+                top: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 600px) {
             .logo {
                 font-size: 2.8rem;
+            }
+            
+            .back-home {
+                top: 15px;
+                left: 15px;
+                padding: 8px 15px;
+                font-size: 0.85rem;
             }
             
             .audio-mini-toggle {
@@ -428,10 +474,21 @@
             .character-name, .section-title {
                 font-size: 1.8rem;
             }
+            
+            .container {
+                padding: 20px;
+                padding-top: 90px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Tombol Kembali ke Home -->
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        <span>Kembali ke Home</span>
+    </a>
+
     <!-- Partikel animasi di latar belakang -->
     <div class="particles" id="particles"></div>
 
@@ -564,11 +621,11 @@
 
     <!-- Audio untuk backsound (tersembunyi) -->
     <audio id="backgroundAudio" loop autoplay>
-        <!-- Sumber audio dengan fallback -->
-        <source src="https://youtu.be/ldEzCnE89a4?si=YB6nZxGFbvAw89Gj" type="audio/mpeg">
-        <source src="https://youtu.be/ldEzCnE89a4?si=YB6nZxGFbvAw89Gj" type="audio/mpeg">
+        <!-- Sumber audio dengan fallback - FIXED LINK -->
+        <source src="https://assets.mixkit.co/music/preview/mixkit-epic-action-trailer-276.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-intense-epic-trailer-276.mp3" type="audio/mpeg">
         <!-- Fallback audio dari sumber lain jika yang pertama gagal -->
-        <source src="https://youtu.be/ldEzCnE89a4?si=YB6nZxGFbvAw89Gj" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-deep-urban-623.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -670,6 +727,16 @@
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1) translateY(0)';
             });
+        });
+        
+        // Efek hover untuk tombol kembali
+        const backButton = document.querySelector('.back-home');
+        backButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.05)';
+        });
+        
+        backButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
         });
         
         // Inisialisasi partikel saat halaman dimuat
