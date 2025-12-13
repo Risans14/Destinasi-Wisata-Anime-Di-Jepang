@@ -4,98 +4,803 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desa Konoha – Taman Naruto</title>
-    <link rel="stylesheet" href="konoha.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(20, 10, 0, 0.85), rgba(40, 30, 10, 0.9)), 
+                        url('konoha1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Animasi latar belakang partikel */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 165, 0, 0.4);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Tombol Kembali ke Home */
+        .back-home {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.8), rgba(180, 120, 0, 0.8));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-home:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 165, 0, 0.4);
+            background: linear-gradient(135deg, rgba(255, 185, 40, 0.9), rgba(200, 140, 20, 0.9));
+        }
+
+        /* Container utama */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+            padding-top: 100px;
+        }
+
+        /* Header dengan animasi */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: slideDown 1.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #ffa500, #ff4500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(255, 165, 0, 0.5);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+            }
+            to {
+                text-shadow: 0 0 40px rgba(255, 165, 0, 0.8), 0 0 60px rgba(255, 69, 0, 0.6);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ffdd99;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        /* Konten utama */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* KIRI: MAIN CHARACTER (NARUTO UZUMAKI) */
+        .main-character {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            animation: floatUpDown 4s infinite ease-in-out;
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .character-card {
+            background: rgba(40, 30, 15, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s, box-shadow 0.5s;
+            border: 2px solid rgba(255, 165, 0, 0.3);
+            height: 100%;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 165, 0, 0.4);
+        }
+
+        .character-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 3px solid #ffa500;
+        }
+
+        .character-info {
+            padding: 25px;
+        }
+
+        .character-name {
+            font-size: 2.2rem;
+            color: #ffcc66;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
+        }
+
+        .character-title {
+            font-size: 1.1rem;
+            color: #a3d9ff;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .character-desc {
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        /* KANAN: 4 FOTO SAMPING - GALERI */
+        .side-locations {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .location-card {
+            background: rgba(50, 35, 20, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 185, 0, 0.2);
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .location-card:nth-child(1) { animation-delay: 0.2s; }
+        .location-card:nth-child(2) { animation-delay: 0.4s; }
+        .location-card:nth-child(3) { animation-delay: 0.6s; }
+        .location-card:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(255, 185, 0, 0.3);
+            border-color: rgba(255, 185, 0, 0.5);
+        }
+
+        .location-img-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .location-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .location-card:hover .location-img {
+            transform: scale(1.1);
+        }
+
+        .location-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 165, 0, 0.8);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .location-info {
+            padding: 20px;
+        }
+
+        .location-name {
+            font-size: 1.4rem;
+            color: #66ffcc;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location-name i {
+            color: #ffcc66;
+        }
+
+        .location-desc {
+            line-height: 1.5;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+        }
+
+        .location-highlight {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        .location-caption {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sinopsis section di BAWAH */
+        .synopsis {
+            background: rgba(30, 20, 10, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border-left: 5px solid #ffa500;
+            animation: slideInRight 1.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ffcc66;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            font-size: 2rem;
+        }
+
+        .synopsis-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #f0f0f0;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        /* Foto di bawah sinopsis */
+        .bottom-img {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+        }
+
+        .caption {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 5px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Tombol Kembali di dalam synopsis */
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ffa500, #ff4500);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.4);
+        }
+
+        /* Tombol audio mini tersembunyi */
+        .audio-mini-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 165, 0, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0.3;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .audio-mini-toggle:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #e0c090;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 165, 0, 0.3);
+            margin-top: 50px;
+        }
+
+        .naruto-stamp {
+            font-size: 2rem;
+            color: #ffa500;
+            margin-bottom: 10px;
+            animation: rotate 10s infinite linear;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsif */
+        @media (max-width: 1100px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .back-home {
+                top: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .back-home {
+                top: 15px;
+                left: 15px;
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .audio-mini-toggle {
+                bottom: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .character-name, .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 20px;
+                padding-top: 90px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Tombol Kembali ke Home -->
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        <span>Kembali ke Home</span>
+    </a>
 
-    <!-- BACKSOUND AUTOPLAY -->
-    <audio id="bgm" loop>
+    <!-- Partikel animasi di latar belakang -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">ナルト</h1>
+            <p class="subtitle">Desa Konoha - Taman Naruto</p>
+        </header>
+
+        <div class="main-content">
+            <!-- KIRI: MAIN CHARACTER (NARUTO UZUMAKI) -->
+            <div class="main-character">
+                <div class="character-card">
+                    <!-- FOTO NARUTO UZUMAKI -->
+                    <img src="naruto.png" alt="Naruto Uzumaki" class="character-img">
+                    <!-- CAPTION DI BAWAH FOTO -->
+                    <div class="location-caption">"Aku akan menjadi Hokage! Percayalah!" - Naruto Uzumaki</div>
+                    <div class="character-info">
+                        <!-- NAMA DAN TITLE -->
+                        <h2 class="character-name">Naruto Uzumaki</h2>
+                        <p class="character-title">Calon Hokage - Ninja Desa Konoha</p>
+                        <!-- DESKRIPSI KARAKTER -->
+                        <p class="character-desc">
+                            Ninja muda dari Desa Konoha yang bercita-cita menjadi Hokage. Lahir dengan 
+                            Nine-Tails (Kyuubi) terkurung di dalam tubuhnya, Naruto tumbuh sebagai anak yatim 
+                            yang diasingkan oleh warga desa. Namun, dengan tekad dan semangat pantang menyerah, 
+                            ia membuktikan diri sebagai ninja terkuat yang melindungi desanya dan meraih pengakuan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KANAN: 4 Foto samping - GALERI -->
+            <div class="side-locations">
+                <!-- Foto 1: Desa Konoha Fuji-Q -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Taman</span>
+                        <img src="konoha1.jpg" alt="Desa Konoha Fuji-Q Highland" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-tree"></i> Desa Konoha Fuji-Q</h3>
+                        <p class="location-desc">
+                            Replika Desa Konoha di Fuji-Q Highland, Yamanashi. Pengunjung dapat merasakan atmosfer ninja secara langsung.
+                        </p>
+                    </div>
+                    <div class="location-caption">Desa Konoha – Fuji-Q Highland</div>
+                </div>
+                
+                <!-- Foto 2: Wahana Ninja -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Wahana</span>
+                        <img src="konoha2.jpg" alt="Wahana Ninja" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-gamepad"></i> Wahana Ninja</h3>
+                        <p class="location-desc">
+                            Wahana interaktif ninja dengan aktivitas memanjat, melempar shuriken, dan tantangan fisik lainnya.
+                        </p>
+                    </div>
+                    <div class="location-caption">Wahana Ninja Interaktif</div>
+                </div>
+                
+                <!-- Foto 3: Karakter Naruto -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Karakter</span>
+                        <img src="konoha3.jpg" alt="Karakter Naruto" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-user-ninja"></i> Karakter Ikonik</h3>
+                        <p class="location-desc">
+                            Area foto dengan patung karakter Naruto, Sasuke, Sakura, dan karakter lainnya dari seri Naruto.
+                        </p>
+                    </div>
+                    <div class="location-caption">Karakter Ikonik Naruto</div>
+                </div>
+                
+                <!-- Foto 4: Jalanan Konoha -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Replika</span>
+                        <img src="konoha4.jpg" alt="Jalanan Desa Konoha" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-road"></i> Jalanan Konoha</h3>
+                        <p class="location-desc">
+                            Jalanan replika Desa Konoha dengan detail bangunan, toko-toko, dan suasana seperti dalam anime.
+                        </p>
+                    </div>
+                    <div class="location-caption">Jalanan Desa Konoha Replika</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SINOPSIS SECTION DI BAWAH -->
+        <div class="synopsis">
+            <h2 class="section-title"><i class="fas fa-scroll"></i> Desa Konoha Taman Naruto</h2>
+            <p class="synopsis-text">
+                Desa Konoha yang ditampilkan di anime <span class="highlight">Naruto</span> dihidupkan dalam bentuk taman hiburan di Jepang. 
+                Pengunjung dapat merasakan pengalaman dunia ninja secara nyata di beberapa lokasi, termasuk 
+                <span class="highlight">Fuji-Q Highland</span> di Fujiyoshida, Prefektur Yamanashi, dan <span class="highlight">Nijigen No Mori</span> di Pulau Awaji, Prefektur Hyogo. 
+                Taman ini menghadirkan replika Desa Konoha, wahana interaktif, serta area foto dengan karakter-karakter 
+                ikonik Naruto.
+                <br><br>
+                Pengunjung bisa mencoba aktivitas ninja seperti memanjat, menembakkan shuriken, atau berjalan melalui 
+                jalanan yang menyerupai Desa Konoha asli. Setiap sudut taman menghadirkan detail visual yang menarik 
+                dan suasana yang seru bagi seluruh anggota keluarga.
+                <br><br>
+                <span class="highlight">Naruto</span> bercerita tentang seorang ninja muda bernama Naruto Uzumaki yang bercita-cita menjadi Hokage, 
+                pemimpin desa Konoha, agar diakui oleh semua orang. Cerita menampilkan petualangan, persahabatan, 
+                persaingan antar ninja, dan pertumbuhan karakter yang penuh tekad, pengorbanan, serta perjuangan melawan 
+                berbagai musuh untuk melindungi desanya.
+            </p>
+            
+            <!-- Tombol Kembali di dalam synopsis -->
+            <a href="index.html" class="back-btn">Kembali ke Home</a>
+        </div>
+    </div>
+
+    <!-- Tombol audio mini tersembunyi (hanya ikon kecil) -->
+    <div class="audio-mini-toggle" id="audioToggle" title="Toggle Audio">
+        <i class="fas fa-volume-up" id="audioIcon"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="naruto-stamp">
+            <i class="fas fa-leaf"></i>
+        </div>
+        <p>Desa Konoha - Taman Naruto © 2025 | Destinasi Penggemar Naruto</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #e0c090;">
+            <i class="fas fa-music"></i> Backsound diputar otomatis | Klik ikon speaker di pojok kanan bawah untuk mute/unmute
+        </p>
+    </footer>
+
+    <!-- Audio untuk backsound (tersembunyi) -->
+    <audio id="backgroundAudio" loop autoplay>
+        <!-- Sumber audio dari kode asli -->
         <source src="naruto.mp3" type="audio/mp3">
     </audio>
 
     <script>
-        const bgm = document.getElementById("bgm");
-        bgm.volume = 1.00;
+        // Inisialisasi partikel latar belakang
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 20 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                const colors = ['rgba(255, 165, 0, 0.5)', 'rgba(255, 69, 0, 0.5)', 'rgba(210, 105, 30, 0.5)'];
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
 
-        document.addEventListener("DOMContentLoaded", () => {
+        // Kontrol audio - SISTEM SAMA DENGAN KODE ASLI
+        const audio = document.getElementById('backgroundAudio');
+        const audioToggle = document.getElementById('audioToggle');
+        const audioIcon = document.getElementById('audioIcon');
+        
+        // Atur volume default seperti kode asli
+        audio.volume = 1.00;
+        
+        // Status audio awal
+        let isAudioPlaying = true;
+        
+        // Fungsi untuk mencoba memutar audio dengan sistem overlay klik (sama dengan kode asli)
+        function initializeAudio() {
+            // Buat overlay transparan untuk klik pertama
             const overlay = document.createElement('div');
             overlay.style.position = 'fixed';
-            overlay.style.top = 0;
-            overlay.style.left = 0;
+            overlay.style.top = '0';
+            overlay.style.left = '0';
             overlay.style.width = '100%';
             overlay.style.height = '100%';
-            overlay.style.zIndex = 9999;
+            overlay.style.zIndex = '9999';
             overlay.style.cursor = 'pointer';
             overlay.style.background = 'transparent';
             overlay.title = 'Klik untuk memutar musik';
             document.body.appendChild(overlay);
 
             overlay.addEventListener('click', () => {
-                bgm.play();
+                // Coba putar audio
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log("Audio berhasil diputar");
+                        isAudioPlaying = true;
+                        audioIcon.className = 'fas fa-volume-up';
+                        audioToggle.title = "Klik untuk mute audio";
+                    }).catch(error => {
+                        console.log("Autoplay diblokir");
+                        isAudioPlaying = false;
+                        audioIcon.className = 'fas fa-volume-mute';
+                        audioToggle.title = "Klik untuk memutar audio (autoplay diblokir)";
+                    });
+                }
+                
+                // Hapus overlay setelah klik
                 document.body.removeChild(overlay);
             });
+        }
+        
+        // Event listener untuk toggle audio mini
+        audioToggle.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                isAudioPlaying = true;
+                audioIcon.className = 'fas fa-volume-up';
+                audioToggle.title = "Klik untuk mute audio";
+            } else {
+                audio.pause();
+                isAudioPlaying = false;
+                audioIcon.className = 'fas fa-volume-mute';
+                audioToggle.title = "Klik untuk unmute audio";
+            }
+        });
+        
+        // Efek hover untuk kartu foto
+        document.querySelectorAll('.location-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.03) translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+        
+        // Inisialisasi saat halaman dimuat
+        window.onload = function() {
+            createParticles();
+            initializeAudio(); // Inisialisasi sistem audio
+            
+            // Efek badge berkedip
+            setInterval(() => {
+                document.querySelectorAll('.location-badge').forEach(badge => {
+                    badge.style.backgroundColor = `rgba(255, 165, 0, ${0.7 + Math.random() * 0.3})`;
+                });
+            }, 2000);
+        };
+        
+        // Efek parallax scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            
+            document.querySelector('.main-character').style.transform = `translateY(${rate}px)`;
+            
+            document.querySelectorAll('.location-card').forEach((card, index) => {
+                const speed = 0.1 + (index * 0.05);
+                card.style.transform = `translateY(${rate * speed}px) scale(1)`;
+            });
+        });
+        
+        // Deteksi interaksi pengguna untuk audio
+        document.addEventListener('click', function() {
+            if (audio.paused && !isAudioPlaying) {
+                audio.play();
+                isAudioPlaying = true;
+                audioIcon.className = 'fas fa-volume-up';
+            }
         });
     </script>
-
-    <!-- PARALLAX BACKGROUND -->
-    <div class="parallax"></div>
-    <div class="overlay"></div>
-
-    <!-- LAYOUT 2 KOLOM -->
-    <div class="destinasi-wrapper">
-
-        <!-- KOLOM KIRI -->
-        <div class="text-box">
-            <h1>Desa Konoha – Taman Naruto</h1>
-
-            <p>
-                Desa Konoha yang ditampilkan di anime Naruto dihidupkan dalam bentuk taman hiburan di Jepang. 
-                Pengunjung dapat merasakan pengalaman dunia ninja secara nyata di beberapa lokasi, termasuk 
-                Fuji-Q Highland di Fujiyoshida, Prefektur Yamanashi, dan Nijigen No Mori di Pulau Awaji, Prefektur Hyogo. 
-                Taman ini menghadirkan replika Desa Konoha, wahana interaktif, serta area foto dengan karakter-karakter 
-                ikonik Naruto.
-            </p>
-
-            <p>
-                Pengunjung bisa mencoba aktivitas ninja seperti memanjat, menembakkan shuriken, atau berjalan melalui 
-                jalanan yang menyerupai Desa Konoha asli. Setiap sudut taman menghadirkan detail visual yang menarik 
-                dan suasana yang seru bagi seluruh anggota keluarga.
-            </p>
-
-            <h3>Sinopsis Naruto:</h3>
-            <p>
-                Naruto bercerita tentang seorang ninja muda bernama Naruto Uzumaki yang bercita-cita menjadi Hokage, 
-                pemimpin desa Konoha, agar diakui oleh semua orang. Cerita menampilkan petualangan, persahabatan, 
-                persaingan antar ninja, dan pertumbuhan karakter yang penuh tekad, pengorbanan, serta perjuangan melawan 
-                berbagai musuh untuk melindungi desanya.
-            </p>
-
-            <!-- FOTO TAMBAHAN DI KOLOM KIRI (BARU) -->
-            <img src="naruto.png" class="bottom-img" alt="Naruto">
-            <div class="bottom-caption">Naruto Uzumaki</div>
-
-            <a href="index.html" class="back-btn">Kembali</a>
-        </div>
-
-        <!-- KOLOM KANAN -->
-        <div class="image-box-right">
-            <img src="konoha1.jpg" alt="Desa Konoha Fuji-Q Highland">
-            <div class="caption">Desa Konoha – Fuji-Q Highland</div>
-
-            <div class="extra-gallery">
-                <img src="konoha2.jpg" alt="Wahana Ninja">
-                <div class="caption">Wahana Ninja Interaktif</div>
-
-                <img src="konoha3.jpg" alt="Karakter Naruto">
-                <div class="caption">Karakter Ikonik Naruto</div>
-
-                <img src="konoha4.jpg" alt="Jalanan Desa Konoha">
-                <div class="caption">Jalanan Desa Konoha Replika</div>
-            </div>
-        </div>
-
-    </div>
-
 </body>
 </html>
-
