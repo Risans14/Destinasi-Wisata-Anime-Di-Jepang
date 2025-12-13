@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jujutsu Kaisen - Real World Locations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(10, 5, 20, 0.85), rgba(30, 15, 50, 0.9)), 
+                        url('https://images6.alphacoders.com/134/thumb-1920-1345576.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Animasi latar belakang partikel */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(120, 0, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Container utama */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        /* Header dengan animasi */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: slideDown 1.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #ff0080, #8000ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(255, 0, 128, 0.5);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 0, 128, 0.5);
+            }
+            to {
+                text-shadow: 0 0 40px rgba(255, 0, 128, 0.8), 0 0 60px rgba(128, 0, 255, 0.6);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b19cd9;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        /* Konten utama */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Karakter utama (kiri) */
+        .main-character {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            animation: floatUpDown 4s infinite ease-in-out;
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .character-card {
+            background: rgba(20, 10, 40, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s, box-shadow 0.5s;
+            border: 2px solid rgba(128, 0, 255, 0.3);
+            height: 100%;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(128, 0, 255, 0.4);
+        }
+
+        .character-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 3px solid #ff0080;
+        }
+
+        .character-info {
+            padding: 25px;
+        }
+
+        .character-name {
+            font-size: 2.2rem;
+            color: #ff66cc;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 102, 204, 0.5);
+        }
+
+        .character-title {
+            font-size: 1.1rem;
+            color: #a3d9ff;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .character-desc {
+            line-height: 1.6;
+            color: #d0d0e0;
+        }
+
+        /* 4 Lokasi samping (kanan) */
+        .side-locations {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .location-card {
+            background: rgba(25, 15, 45, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s;
+            border: 1px solid rgba(0, 200, 255, 0.2);
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .location-card:nth-child(1) { animation-delay: 0.2s; }
+        .location-card:nth-child(2) { animation-delay: 0.4s; }
+        .location-card:nth-child(3) { animation-delay: 0.6s; }
+        .location-card:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 200, 255, 0.3);
+            border-color: rgba(0, 200, 255, 0.5);
+        }
+
+        .location-img-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .location-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .location-card:hover .location-img {
+            transform: scale(1.1);
+        }
+
+        .location-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 0, 128, 0.8);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .location-info {
+            padding: 20px;
+        }
+
+        .location-name {
+            font-size: 1.4rem;
+            color: #66ffcc;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location-name i {
+            color: #ffcc66;
+        }
+
+        .location-desc {
+            line-height: 1.5;
+            color: #d0d0e0;
+            font-size: 0.95rem;
+        }
+
+        .location-highlight {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        .location-caption {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sinopsis section */
+        .synopsis {
+            background: rgba(15, 5, 30, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border-left: 5px solid #ff0080;
+            animation: slideInRight 1.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ff66cc;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            font-size: 2rem;
+        }
+
+        .synopsis-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #e0e0ff;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        /* Kontrol audio TERSEMBUNYI */
+        .audio-controls {
+            display: none; /* Kontrol disembunyikan */
+        }
+
+        /* Tombol audio mini tersembunyi */
+        .audio-mini-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 0, 128, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0.3;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .audio-mini-toggle:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #a0a0c0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(128, 0, 255, 0.3);
+            margin-top: 50px;
+        }
+
+        .jjk-stamp {
+            font-size: 2rem;
+            color: #ff0080;
+            margin-bottom: 10px;
+            animation: rotate 10s infinite linear;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsif */
+        @media (max-width: 1100px) {
+            .main-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .audio-mini-toggle {
+                bottom: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .character-name, .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Partikel animasi di latar belakang -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">呪術廻戦</h1>
+            <p class="subtitle">Lokasi Nyata yang Menginspirasi Dunia Jujutsu Kaisen</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Karakter utama (kiri) -->
+            <div class="main-character">
+                <div class="character-card">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a44778ea-3457-40e0-8979-b7e3685d23d0/dfpb8hk-3d91afa0-9807-49fb-b7e3-49ca345011cf.png/v1/fill/w_1920,h_1080/yugi_itadori_x_mobile_legends_8k_wallpaper_by_newjer53_dfpb8hk-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9hNDQ3NzhlYS0zNDU3LTQwZTAtODk3OS1iN2UzNjg1ZDIzZDAvZGZwYjhoay0zZDkxYWZhMC05ODA3LTQ5ZmItYjdlMy00OWNhMzQ1MDExY2YucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.2C3QBUrsyScWzO3-7lYGoNWImVngZhMLLutxVC8NhPc" alt="Yuji Itadori" class="character-img">
+                    <div class="location-caption">"Saya akan membantu orang sebanyak yang saya bisa, bahkan jika itu berarti menjadi wadah Sukuna." - Yuji Itadori</div>
+                    <div class="character-info">
+                        <h2 class="character-name">Yuji Itadori</h2>
+                        <p class="character-title">Penerima Sukuna - Siswa Tokyo Jujutsu High</p>
+                        <p class="character-desc">
+                            Seorang siswa SMA dengan kemampuan fisik luar biasa yang menjadi wadah bagi Raja Kutukan, Ryomen Sukuna. 
+                            Meski menyimpan kekuatan terkutuk, Yuji bertekad untuk menggunakan hidupnya menyelamatkan orang lain 
+                            sambil mengumpulkan semua jari Sukuna untuk dimusnahkan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 Lokasi samping (kanan) -->
+            <div class="side-locations">
+                <!-- Lokasi 1: Shibuya -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Arc Utama</span>
+                        <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Shibuya, Tokyo" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-map-marker-alt"></i> Shibuya, Tokyo</h3>
+                        <p class="location-desc">
+                            Lokasi utama <span class="location-highlight">"Shibuya Incident Arc"</span>, salah satu arc terpenting dalam cerita. 
+                            Pertempuran besar antara jujutsu sorcerers dan kutukan terjadi di berbagai titik ikonik Shibuya.
+                        </p>
+                    </div>
+                    <div class="location-caption">Spot: Shibuya Scramble Crossing, stasiun, gedung sekitar. Lokasi pertempuran epik melawan mahagala kutukan.</div>
+                </div>
+                
+                <!-- Lokasi 2: Tokyo National Museum -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Sekolah</span>
+                        <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Tokyo National Museum" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-school"></i> Tokyo National Museum & Ueno Park</h3>
+                        <p class="location-desc">
+                            Menginspirasi desain <span class="location-highlight">Tokyo Jujutsu High</span>, sekolah utama tempat Yuji, Megumi, 
+                            dan Nobara belajar serta berlatih teknik jujutsu di bawah bimbingan Satoru Gojo.
+                        </p>
+                    </div>
+                    <div class="location-caption">Inspirasi untuk Tokyo Jujutsu High (sekolahnya). Arsitektur tradisional dengan sentuhan modern.</div>
+                </div>
+                
+                <!-- Lokasi 3: Fukagawa Fudōson -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Pertempuran</span>
+                        <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Fukagawa Fudōson" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-torii-gate"></i> Fukagawa Fudōson / Kuil Tomioka</h3>
+                        <p class="location-desc">
+                            Latar belakang pertarungan sengit antara <span class="location-highlight">Yuji vs Choso</span>. 
+                            Koridor kuil dan area sekitarnya menjadi saksi pertarungan hidup-mati dengan teknik darah Choso.
+                        </p>
+                    </div>
+                    <div class="location-caption">Latar pertarungan Yuji vs. Choso (lorong & kuil). Atmosfer spiritual yang intens.</div>
+                </div>
+                
+                <!-- Lokasi 4: Kyoto -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Kompetisi</span>
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kyoto" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-mountain"></i> Kyoto</h3>
+                        <p class="location-desc">
+                            Inspirasi untuk <span class="location-highlight">Kyoto Jujutsu High</span>, sekolah saingan Tokyo Jujutsu High. 
+                            Lokasi Event Pertukaran antara kedua sekolah yang penuh ketegangan dan pertarungan spektakuler.
+                        </p>
+                    </div>
+                    <div class="location-caption">Inspirasi untuk Kyoto Jujutsu High. Spot: Kuil Kiyomizu-dera, jalanan tradisional Higashiyama.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sinopsis Section -->
+        <div class="synopsis">
+            <h2 class="section-title"><i class="fas fa-scroll"></i> Dunia Nyata Jujutsu Kaisen</h2>
+            <p class="synopsis-text">
+                <span class="highlight">Jujutsu Kaisen</span> tidak hanya menampilkan pertarungan epik antara jujutsu sorcerers dan kutukan, 
+                tetapi juga mengambil inspirasi dari <span class="highlight">lokasi nyata di Jepang</span>. Pencipta Gege Akutami dengan cermat 
+                memasukkan elemen-elemen perkotaan Tokyo dan tempat-tempat bersejarah ke dalam alur cerita, menciptakan dunia yang terasa hidup dan nyata.
+                <br><br>
+                <span class="highlight">Shibuya</span>, dengan Scramble Crossing-nya yang terkenal, menjadi panggung untuk arc paling intens dalam seri ini. 
+                Sementara itu, <span class="highlight">Tokyo National Museum dan Ueno Park</span> memberikan nuansa tradisional yang cocok untuk sekolah jujutsu. 
+                Kuil-kuil seperti <span class="highlight">Fukagawa Fudōson</span> menambah dimensi spiritual pada pertarungan, dan keindahan <span class="highlight">Kyoto</span> 
+                mencerminkan atmosfer sekolah saingan yang lebih tradisional.
+                <br><br>
+                Dengan menggabungkan lokasi nyata dengan fantasi gelap tentang kutukan dan jujutsu, serial ini menciptakan pengalaman yang unik 
+                bagi penggemar yang dapat mengunjungi tempat-tempat yang menginspirasi dunia Jujutsu Kaisen.
+            </p>
+        </div>
+    </div>
+
+    <!-- Tombol audio mini tersembunyi (hanya ikon kecil) -->
+    <div class="audio-mini-toggle" id="audioToggle" title="Toggle Audio">
+        <i class="fas fa-volume-up" id="audioIcon"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="jjk-stamp">
+            <i class="fas fa-dragon"></i>
+        </div>
+        <p>Jujutsu Kaisen Real World Locations © 2025 | Eksplorasi Dunia Nyata yang Menginspirasi Anime</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #888;">
+            <i class="fas fa-music"></i> Backsound diputar otomatis | Klik ikon speaker di pojok kanan bawah untuk mute/unmute
+        </p>
+    </footer>
+
+    <!-- Audio untuk backsound (tersembunyi) -->
+    <audio id="backgroundAudio" loop autoplay>
+        <!-- Sumber audio dengan fallback -->
+        <source src="https://youtu.be/ldEzCnE89a4?si=YB6nZxGFbvAw89Gj" type="audio/mpeg">
+        <source src="https://youtu.be/ldEzCnE89a4?si=YB6nZxGFbvAw89Gj" type="audio/mpeg">
+        <!-- Fallback audio dari sumber lain jika yang pertama gagal -->
+        <source src="https://youtu.be/ldEzCnE89a4?si=YB6nZxGFbvAw89Gj" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Inisialisasi partikel latar belakang
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Ukuran acak
+                const size = Math.random() * 20 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Posisi acak
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Warna acak
+                const colors = ['rgba(255, 0, 128, 0.5)', 'rgba(128, 0, 255, 0.5)', 'rgba(0, 200, 255, 0.5)'];
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Animasi dengan durasi acak
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Delay acak
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Kontrol audio TERSEMBUNYI
+        const audio = document.getElementById('backgroundAudio');
+        const audioToggle = document.getElementById('audioToggle');
+        const audioIcon = document.getElementById('audioIcon');
+        
+        // Atur volume default
+        audio.volume = 0.5; // Volume 50%
+        
+        // Status audio awal
+        let isAudioPlaying = true;
+        
+        // Fungsi untuk mencoba memutar audio dengan penanganan autoplay policy
+        function tryPlayAudio() {
+            // Cek jika audio sudah diputar
+            if (audio.paused) {
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log("Audio berhasil diputar otomatis");
+                        isAudioPlaying = true;
+                        audioIcon.className = 'fas fa-volume-up';
+                    }).catch(error => {
+                        console.log("Autoplay diblokir browser, menunggu interaksi pengguna");
+                        isAudioPlaying = false;
+                        audioIcon.className = 'fas fa-volume-mute';
+                        
+                        // Tampilkan pesan subtle
+                        audioToggle.title = "Klik untuk memutar audio (autoplay diblokir)";
+                    });
+                }
+            }
+        }
+        
+        // Coba putar audio saat halaman dimuat
+        window.addEventListener('load', function() {
+            // Beri delay sedikit untuk memastikan halaman sudah siap
+            setTimeout(tryPlayAudio, 500);
+        });
+        
+        // Event listener untuk toggle audio mini
+        audioToggle.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                isAudioPlaying = true;
+                audioIcon.className = 'fas fa-volume-up';
+                audioToggle.title = "Klik untuk mute audio";
+            } else {
+                audio.pause();
+                isAudioPlaying = false;
+                audioIcon.className = 'fas fa-volume-mute';
+                audioToggle.title = "Klik untuk unmute audio";
+            }
+        });
+        
+        // Efek hover untuk kartu lokasi
+        document.querySelectorAll('.location-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.03) translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+        
+        // Inisialisasi partikel saat halaman dimuat
+        window.onload = function() {
+            createParticles();
+            
+            // Efek tipe untuk sinopsis
+            const synopsisText = document.querySelector('.synopsis-text');
+            const originalText = synopsisText.textContent;
+            synopsisText.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    synopsisText.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 10);
+                }
+            }
+            
+            // Mulai efek ketikan setelah delay
+            setTimeout(typeWriter, 1000);
+            
+            // Efek badge berkedip
+            setInterval(() => {
+                document.querySelectorAll('.location-badge').forEach(badge => {
+                    badge.style.backgroundColor = `rgba(255, 0, 128, ${0.7 + Math.random() * 0.3})`;
+                });
+            }, 2000);
+        };
+        
+        // Efek parallax scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            
+            document.querySelector('.main-character').style.transform = `translateY(${rate}px)`;
+            
+            // Efek parallax untuk kartu lokasi
+            document.querySelectorAll('.location-card').forEach((card, index) => {
+                const speed = 0.1 + (index * 0.05);
+                card.style.transform = `translateY(${rate * speed}px) scale(1)`;
+            });
+        });
+        
+        // Deteksi interaksi pengguna untuk memutar audio jika autoplay diblokir
+        document.addEventListener('click', function() {
+            if (audio.paused && !isAudioPlaying) {
+                tryPlayAudio();
+            }
+        });
+    </script>
+</body>
+</html>
