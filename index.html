@@ -7,9 +7,10 @@
 
   <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FONTAWESOME ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- STYLE -->
-  <link rel="stylesheet" href="style.css">
   <style>
     /* GLOBAL */
     * {
@@ -22,11 +23,12 @@
     body {
       color: white;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     /* PARALLAX BACKGROUND */
     .bg-parallax {
-      background: url("jepangg.jpeg") center/cover no-repeat fixed;
+      background: url("https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80") center/cover no-repeat fixed;
       position: fixed;
       inset: 0;
       z-index: -1;
@@ -39,6 +41,7 @@
       padding: 20px 40px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       background: linear-gradient(135deg, rgba(78,85,255,0.48), rgba(166,54,255,0.48));
       backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(255,255,255,0.2);
@@ -57,6 +60,130 @@
       object-fit: cover; 
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .tag {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 5px;
+    }
+
+    /* SEARCH CONTAINER */
+    .search-container {
+      position: relative;
+      width: 300px;
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 12px 20px;
+      padding-right: 50px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 30px;
+      color: white;
+      font-size: 16px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .search-box::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: #ff6bcb;
+      box-shadow: 0 0 15px rgba(255, 107, 203, 0.5);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 5px;
+      transition: color 0.3s;
+    }
+
+    .search-btn:hover {
+      color: #ff6bcb;
+    }
+
+    /* SEARCH RESULTS */
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(20, 10, 40, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 15px;
+      margin-top: 10px;
+      padding: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 1000;
+    }
+
+    .search-results.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-item {
+      padding: 12px 15px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .result-item:hover {
+      background: rgba(111, 66, 193, 0.4);
+      transform: translateX(5px);
+    }
+
+    .result-item .thumb {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, #ff6bcb, #ff4f81);
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .result-item .anime-name {
+      font-weight: 600;
+      color: #ffcc66;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 20px;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
     }
 
     /* GRID */
@@ -81,6 +208,13 @@
     .sidebar h3 {
       font-size: 20px;
       margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar h3 i {
+      color: #ff6bcb;
     }
 
     .dest-list {
@@ -163,6 +297,48 @@
     .inner-box p {
       font-size: 16px;
       line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* HIGHLIGHT SEARCH */
+    .highlight {
+      background-color: rgba(255, 107, 203, 0.3);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        height: auto;
+        max-height: 400px;
+      }
+      
+      header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+      }
+      
+      .search-container {
+        width: 100%;
+        max-width: 500px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .welcome-title {
+        font-size: 36px;
+      }
+      
+      .container {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -170,18 +346,8 @@
 
 <!-- BACKSOUND -->
 <audio id="bgm" loop>
-  <source src="Tabun.mp3" type="audio/mp3">
+  <source src="https://assets.mixkit.co/music/preview/mixkit-japanese-traditional-ambient-443.mp3" type="audio/mp3">
 </audio>
-
-<script>
-  const bgm = document.getElementById("bgm");
-  bgm.volume = 1.00;
-  bgm.style.display = "none";
-  // play after first click
-  document.addEventListener('click', () => {
-      if(bgm.paused) bgm.play();
-  }, {once: true});
-</script>
 
 <!-- PARALLAX BACKGROUND -->
 <div class="bg-parallax"></div>
@@ -189,11 +355,24 @@
 <header>
   <div class="brand">
     <div class="logo-jpg">
-      <img src="aot2.png" alt="Logo Wisata Anime">
+      <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Logo Wisata Anime">
     </div>
     <div>
       <h1>Destinasi Wisata Anime Di Jepang</h1>
       <div class="tag">Klik destinasi untuk membuka halaman baru</div>
+    </div>
+  </div>
+  
+  <!-- SEARCH BAR -->
+  <div class="search-container">
+    <input type="text" class="search-box" placeholder="Cari destinasi anime..." id="searchInput">
+    <button class="search-btn" id="searchButton">
+      <i class="fas fa-search"></i>
+    </button>
+    
+    <!-- SEARCH RESULTS -->
+    <div class="search-results" id="searchResults">
+      <div class="no-results" id="noResults">Tidak ada hasil ditemukan</div>
     </div>
   </div>
 </header>
@@ -201,16 +380,40 @@
 <main class="container">
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <h3>Daftar Destinasi</h3>
-    <div class="dest-list">
-      <a href="aot.html" class="dest-item"><div class="thumb">1</div> Attack on Titan — Museum HITA</a>
-      <a href="konoha.html" class="dest-item"><div class="thumb">2</div> Desa Konoha</a>
-      <a href="demon.html" class="dest-item"><div class="thumb">3</div> Demon Slayer</a>
-      <a href="ghibli.html" class="dest-item"><div class="thumb">4</div> Museum Ghibli</a>
-      <a href="suga.html" class="dest-item"><div class="thumb">5</div> Suga Shrine — Your Name</a>
-      <a href="gundam.html" class="dest-item"><div class="thumb">6</div> Gundam Factory</a>
-      <a href="doraemon.html" class="dest-item"><div class="thumb">7</div> Museum Doraemon</a>
-      <a href="jjk.html" class="dest-item"><div class="thumb">8</div> Jujutsu Kaisen</a>
+    <h3><i class="fas fa-map-marked-alt"></i> Daftar Destinasi</h3>
+    <div class="dest-list" id="destList">
+      <a href="aot.html" class="dest-item" data-anime="Attack on Titan" data-search="attack on titan aot shingeki museum hita">
+        <div class="thumb">1</div> 
+        <span class="dest-text">Attack on Titan — Museum HITA</span>
+      </a>
+      <a href="konoha.html" class="dest-item" data-anime="Naruto" data-search="naruto desa konoha hidden leaf">
+        <div class="thumb">2</div> 
+        <span class="dest-text">Desa Konoha</span>
+      </a>
+      <a href="demon.html" class="dest-item" data-anime="Demon Slayer" data-search="demon slayer kimetsu yaiba">
+        <div class="thumb">3</div> 
+        <span class="dest-text">Demon Slayer</span>
+      </a>
+      <a href="ghibli.html" class="dest-item" data-anime="Studio Ghibli" data-search="ghibli museum miyazaki totoro">
+        <div class="thumb">4</div> 
+        <span class="dest-text">Museum Ghibli</span>
+      </a>
+      <a href="suga.html" class="dest-item" data-anime="Your Name" data-search="your name kimi no na wa suga shrine">
+        <div class="thumb">5</div> 
+        <span class="dest-text">Suga Shrine — Your Name</span>
+      </a>
+      <a href="gundam.html" class="dest-item" data-anime="Gundam" data-search="gundam factory robot">
+        <div class="thumb">6</div> 
+        <span class="dest-text">Gundam Factory</span>
+      </a>
+      <a href="doraemon.html" class="dest-item" data-anime="Doraemon" data-search="doraemon museum nobita">
+        <div class="thumb">7</div> 
+        <span class="dest-text">Museum Doraemon</span>
+      </a>
+      <a href="jjk.html" class="dest-item" data-anime="Jujutsu Kaisen" data-search="jujutsu kaisen jjk sorcerer">
+        <div class="thumb">8</div> 
+        <span class="dest-text">Jujutsu Kaisen</span>
+      </a>
     </div>
   </aside>
 
@@ -222,19 +425,218 @@
 
     <div class="inner-box">
       <p>
-        Website ini dibuat untuk membawa pengunjung merasakan pengalaman wisata Jepang melalui sudut pandang dunia anime. Setiap destinasi yang ditampilkan terinspirasi dari lokasi nyata yang muncul dalam anime terkenal, mulai dari Attack on Titan, Naruto, Demon Slayer, hingga karya Studio Ghibli.
+        Website ini dibuat untuk membawa pengunjung merasakan pengalaman wisata Jepang melalui sudut pandang dunia anime. Setiap destinasi yang ditampilkan terinspirasi dari lokasi nyata yang muncul dalam anime terkenal, mulai dari <span class="highlight">Attack on Titan</span>, <span class="highlight">Naruto</span>, <span class="highlight">Demon Slayer</span>, hingga karya <span class="highlight">Studio Ghibli</span>.
       </p>
       <p>
         Selain informasi tempat wisata, setiap halaman destinasi dilengkapi dengan gambar, deskripsi singkat, serta backsound tema yang memperkuat suasana sesuai animenya. Website ini cocok bagi penggemar anime maupun wisatawan yang ingin menemukan referensi perjalanan unik di Jepang.
+      </p>
+      <p>
+        <strong>Tips:</strong> Gunakan fitur pencarian di atas untuk mencari destinasi berdasarkan nama anime atau lokasi!
       </p>
     </div>
   </section>
 </main>
 
+<script>
+  // DATA DESTINASI
+  const destinations = [
+    {
+      id: 1,
+      title: "Attack on Titan — Museum HITA",
+      anime: "Attack on Titan",
+      searchTerms: "attack on titan aot shingeki museum hita",
+      link: "aot.html",
+      thumb: "1"
+    },
+    {
+      id: 2,
+      title: "Desa Konoha",
+      anime: "Naruto",
+      searchTerms: "naruto desa konoha hidden leaf",
+      link: "konoha.html",
+      thumb: "2"
+    },
+    {
+      id: 3,
+      title: "Demon Slayer",
+      anime: "Demon Slayer",
+      searchTerms: "demon slayer kimetsu yaiba",
+      link: "demon.html",
+      thumb: "3"
+    },
+    {
+      id: 4,
+      title: "Museum Ghibli",
+      anime: "Studio Ghibli",
+      searchTerms: "ghibli museum miyazaki totoro",
+      link: "ghibli.html",
+      thumb: "4"
+    },
+    {
+      id: 5,
+      title: "Suga Shrine — Your Name",
+      anime: "Your Name",
+      searchTerms: "your name kimi no na wa suga shrine",
+      link: "suga.html",
+      thumb: "5"
+    },
+    {
+      id: 6,
+      title: "Gundam Factory",
+      anime: "Gundam",
+      searchTerms: "gundam factory robot",
+      link: "gundam.html",
+      thumb: "6"
+    },
+    {
+      id: 7,
+      title: "Museum Doraemon",
+      anime: "Doraemon",
+      searchTerms: "doraemon museum nobita",
+      link: "doraemon.html",
+      thumb: "7"
+    },
+    {
+      id: 8,
+      title: "Jujutsu Kaisen",
+      anime: "Jujutsu Kaisen",
+      searchTerms: "jujutsu kaisen jjk sorcerer",
+      link: "jjk.html",
+      thumb: "8"
+    }
+  ];
+
+  // ELEMENTS
+  const searchInput = document.getElementById('searchInput');
+  const searchButton = document.getElementById('searchButton');
+  const searchResults = document.getElementById('searchResults');
+  const noResults = document.getElementById('noResults');
+  const destList = document.getElementById('destList');
+
+  // BACKSOUND
+  const bgm = document.getElementById("bgm");
+  bgm.volume = 0.5;
+  bgm.style.display = "none";
+  
+  // Play audio after first click
+  document.addEventListener('click', () => {
+    if(bgm.paused) bgm.play();
+  }, {once: true});
+
+  // HIGHLIGHT TEXT FUNCTION
+  function highlightText(text, query) {
+    if (!query) return text;
+    
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
+  }
+
+  // SEARCH FUNCTION
+  function searchDestinations(query) {
+    query = query.toLowerCase().trim();
+    
+    if (query === '') {
+      searchResults.classList.remove('active');
+      return;
+    }
+    
+    const results = destinations.filter(dest => {
+      return dest.title.toLowerCase().includes(query) || 
+             dest.anime.toLowerCase().includes(query) ||
+             dest.searchTerms.toLowerCase().includes(query);
+    });
+    
+    // Clear previous results
+    searchResults.innerHTML = '';
+    
+    if (results.length === 0) {
+      noResults.style.display = 'block';
+      searchResults.appendChild(noResults);
+    } else {
+      noResults.style.display = 'none';
+      
+      results.forEach(dest => {
+        const resultItem = document.createElement('div');
+        resultItem.className = 'result-item';
+        resultItem.innerHTML = `
+          <div class="thumb">${dest.thumb}</div>
+          <div>
+            <div class="anime-name">${highlightText(dest.anime, query)}</div>
+            <div>${highlightText(dest.title, query)}</div>
+          </div>
+        `;
+        
+        // Add click event to navigate to destination
+        resultItem.addEventListener('click', () => {
+          window.location.href = dest.link;
+        });
+        
+        searchResults.appendChild(resultItem);
+      });
+    }
+    
+    searchResults.classList.add('active');
+  }
+
+  // EVENT LISTENERS
+  searchInput.addEventListener('input', (e) => {
+    searchDestinations(e.target.value);
+  });
+
+  searchButton.addEventListener('click', () => {
+    searchDestinations(searchInput.value);
+  });
+
+  searchInput.addEventListener('focus', () => {
+    if (searchInput.value.trim() !== '') {
+      searchDestinations(searchInput.value);
+    }
+  });
+
+  // Close search results when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!searchContainer.contains(e.target)) {
+      searchResults.classList.remove('active');
+    }
+  });
+
+  // Highlight sidebar items on hover
+  document.querySelectorAll('.dest-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      const text = this.querySelector('.dest-text').textContent;
+      const anime = this.getAttribute('data-anime');
+      
+      // Add a subtle effect
+      this.style.transform = 'translateX(8px) scale(1.03)';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      this.style.transform = '';
+    });
+  });
+
+  // Filter sidebar items when typing
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+    
+    document.querySelectorAll('.dest-item').forEach(item => {
+      const searchData = item.getAttribute('data-search').toLowerCase();
+      const anime = item.getAttribute('data-anime').toLowerCase();
+      const text = item.querySelector('.dest-text').textContent.toLowerCase();
+      
+      if (query === '' || 
+          text.includes(query) || 
+          anime.includes(query) || 
+          searchData.includes(query)) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+
+  // Initialize search container reference
+  const searchContainer = document.querySelector('.search-container');
+</script>
 </body>
 </html>
-
-
-
-
-
