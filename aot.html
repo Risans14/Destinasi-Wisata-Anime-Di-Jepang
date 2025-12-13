@@ -158,7 +158,7 @@
             }
         }
 
-        /* Karakter utama (kiri) - SINPOSIS TEXT */
+        /* KIRI: MAIN CHARACTER (EREN YEAGER) - PERSIS SEPERTI JJK */
         .main-character {
             flex: 1;
             min-width: 300px;
@@ -220,7 +220,7 @@
             color: #e0e0e0;
         }
 
-        /* 4 Foto samping (kanan) - GALERI FOTO */
+        /* KANAN: 4 FOTO SAMPING - GALERI */
         .side-locations {
             flex: 1;
             min-width: 300px;
@@ -331,6 +331,53 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Sinopsis section di BAWAH (Persis JJK) */
+        .synopsis {
+            background: rgba(20, 10, 5, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border-left: 5px solid #ff6400;
+            animation: slideInRight 1.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ff9966;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            font-size: 2rem;
+        }
+
+        .synopsis-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #f0f0f0;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
         /* Foto di bawah sinopsis */
         .bottom-img {
             width: 100%;
@@ -350,6 +397,18 @@
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* Tombol Kembali di dalam synopsis */
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #f8aa00, #06a500);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
         }
 
         /* Tombol audio mini tersembunyi */
@@ -436,7 +495,7 @@
                 height: 35px;
             }
             
-            .character-name {
+            .character-name, .section-title {
                 font-size: 1.8rem;
             }
             
@@ -464,47 +523,28 @@
         </header>
 
         <div class="main-content">
-            <!-- SINOPSIS TEXT (kiri) -->
+            <!-- KIRI: MAIN CHARACTER (EREN YEAGER) - PERSIS JJK -->
             <div class="main-character">
                 <div class="character-card">
+                    <!-- FOTO EREN YEAGER -->
+                    <img src="eren2.jpg" alt="Eren Yeager" class="character-img">
+                    <!-- CAPTION DI BAWAH FOTO (Persis JJK) -->
+                    <div class="location-caption">"Jika seseorang mencoba mengambil kebebasanku... Aku tidak akan ragu untuk mengambil kebebasan mereka." - Eren Yeager</div>
                     <div class="character-info">
-                        <h1>Attack on Titan – Museum HITA</h1>
-
+                        <!-- NAMA DAN TITLE PERSIS JJK -->
+                        <h2 class="character-name">Eren Yeager</h2>
+                        <p class="character-title">Pemilik Attack Titan - Survey Corps</p>
+                        <!-- DESKRIPSI KARAKTER -->
                         <p class="character-desc">
-                            Museum di Hita, Prefektur Oita, adalah tempat lahirnya Hajime Isayama, kreator manga dan anime fenomenal
-                            Attack on Titan. Museum ini tidak hanya menampilkan koleksi visual yang memukau, tetapi juga menjadi
-                            titik pertemuan antara penggemar anime dan sejarah kreatif di balik dunia Titan yang menegangkan.
+                            Protagonis utama Attack on Titan yang bertekad untuk membebaskan umat manusia dari ancaman Titan. 
+                            Lahir di distrik Shiganshina, Eren menyaksikan kematian ibunya di tangan Titan, menjadi motivasi utamanya 
+                            untuk membasmi semua Titan dan mengungkap misteri dunia di luar tembok.
                         </p>
-
-                        <p class="character-desc">
-                            Di dalam museum, pengunjung dapat menjelajahi berbagai ruangan tematik yang menghadirkan patung-patung
-                            karakter ikonik seperti Eren Yeager, Mikasa Ackerman, dan Armin Arlert. Setiap area dipenuhi dengan
-                            sketsa asli, konsep awal, dan replika tembok "The Wall" yang melindungi manusia dari serangan Titan.
-                            Diorama pertempuran paling ikonik juga ditampilkan secara detail, memberi pengalaman yang sangat imersif.
-                        </p>
-
-                        <p class="character-desc">
-                            Museum ini juga menekankan sejarah pembuatan seri, mulai dari ide awal Hajime Isayama hingga adaptasi
-                            anime yang mendunia. Pengunjung dapat mempelajari teknik menggambar, desain karakter, serta proses
-                            pengembangan dunia yang kompleks dan penuh misteri.
-                        </p>
-
-                        <h3>Sinopsis Attack on Titan:</h3>
-
-                        <p class="character-desc">
-                            Attack on Titan bercerita tentang umat manusia yang hidup dalam tembok raksasa untuk melindungi diri dari
-                            serangan para Titan. Cerita mengikuti Eren Yeager, Mikasa Ackerman, dan Armin Arlert dalam perjuangan
-                            menghadapi ancaman Titan dan mengungkap misteri dunia.
-                        </p>
-
-                        <!-- FOTO DI BAWAH SINOPSIS -->
-                        <img src="eren2.jpg" class="bottom-img" alt="Eren Yeager">
-                        <div class="caption">Eren Yeager</div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4 Foto samping (kanan) - GALERI -->
+            <!-- KANAN: 4 Foto samping - GALERI (Sama dengan sebelumnya) -->
             <div class="side-locations">
                 <!-- Foto 1: Museum HITA -->
                 <div class="location-card">
@@ -568,22 +608,48 @@
             </div>
         </div>
 
-        <!-- Footer dengan credit -->
-        <footer>
-            <div class="aot-stamp">
-                <i class="fas fa-chess-rook"></i>
-            </div>
-            <p>Attack on Titan Museum HITA © 2025 | Destinasi Ziarah Penggemar Shingeki no Kyojin</p>
-            <p style="margin-top: 10px; font-size: 0.8rem; color: #d0b0a0;">
-                <i class="fas fa-music"></i> Backsound diputar otomatis | Klik ikon speaker di pojok kanan bawah untuk mute/unmute
+        <!-- SINOPSIS SECTION DI BAWAH (Persis JJK) -->
+        <div class="synopsis">
+            <h2 class="section-title"><i class="fas fa-scroll"></i> Museum HITA & Attack on Titan</h2>
+            <p class="synopsis-text">
+                Museum di <span class="highlight">Hita, Prefektur Oita</span>, adalah tempat lahirnya <span class="highlight">Hajime Isayama</span>, kreator manga dan anime fenomenal
+                Attack on Titan. Museum ini tidak hanya menampilkan koleksi visual yang memukau, tetapi juga menjadi
+                titik pertemuan antara penggemar anime dan sejarah kreatif di balik dunia Titan yang menegangkan.
+                <br><br>
+                Di dalam museum, pengunjung dapat menjelajahi berbagai ruangan tematik yang menghadirkan patung-patung
+                karakter ikonik seperti <span class="highlight">Eren Yeager</span>, <span class="highlight">Mikasa Ackerman</span>, dan <span class="highlight">Armin Arlert</span>. Setiap area dipenuhi dengan
+                sketsa asli, konsep awal, dan replika tembok <span class="highlight">"The Wall"</span> yang melindungi manusia dari serangan Titan.
+                Diorama pertempuran paling ikonik juga ditampilkan secara detail, memberi pengalaman yang sangat imersif.
+                <br><br>
+                Museum ini juga menekankan sejarah pembuatan seri, mulai dari ide awal Hajime Isayama hingga adaptasi
+                anime yang mendunia. Pengunjung dapat mempelajari teknik menggambar, desain karakter, serta proses
+                pengembangan dunia yang kompleks dan penuh misteri.
+                <br><br>
+                <span class="highlight">Attack on Titan</span> bercerita tentang umat manusia yang hidup dalam tembok raksasa untuk melindungi diri dari
+                serangan para Titan. Cerita mengikuti <span class="highlight">Eren Yeager</span>, <span class="highlight">Mikasa Ackerman</span>, dan <span class="highlight">Armin Arlert</span> dalam perjuangan
+                menghadapi ancaman Titan dan mengungkap misteri dunia.
             </p>
-        </footer>
+            
+            <!-- Tombol Kembali di dalam synopsis -->
+            <a href="index.html" class="back-btn">Kembali ke Home</a>
+        </div>
     </div>
 
     <!-- Tombol audio mini tersembunyi (hanya ikon kecil) -->
     <div class="audio-mini-toggle" id="audioToggle" title="Toggle Audio">
         <i class="fas fa-volume-up" id="audioIcon"></i>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="aot-stamp">
+            <i class="fas fa-chess-rook"></i>
+        </div>
+        <p>Attack on Titan Museum HITA © 2025 | Destinasi Ziarah Penggemar Shingeki no Kyojin</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #d0b0a0;">
+            <i class="fas fa-music"></i> Backsound diputar otomatis | Klik ikon speaker di pojok kanan bawah untuk mute/unmute
+        </p>
+    </footer>
 
     <!-- Audio untuk backsound (tersembunyi) -->
     <audio id="backgroundAudio" loop autoplay>
