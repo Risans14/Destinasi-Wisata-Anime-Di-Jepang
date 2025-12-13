@@ -4,228 +4,758 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suga Shrine – Inspirasi Kimi no Na wa</title>
-    <link rel="stylesheet" href="suga.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* GLOBAL */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* PARALLAX BACKGROUND */
-        .parallax {
-            background-image: url("suga.jpeg");
-            background-attachment: fixed;
+            background: linear-gradient(rgba(20, 10, 40, 0.85), rgba(40, 20, 80, 0.9)), 
+                        url('suga.jpeg') no-repeat center center fixed;
             background-size: cover;
-            background-position: center;
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            filter: brightness(0.7);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            backdrop-filter: blur(8px);
         }
 
-        /* OVERLAY GELAP */
-        .overlay {
+        /* Animasi latar belakang partikel */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(20,20,20,0.6), rgba(0,0,0,0.85));
-            z-index: 0;
+            z-index: -1;
+            pointer-events: none;
         }
 
-        /* LAYOUT 2 KOLOM */
-        .destinasi-wrapper {
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 100, 200, 0.4);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Tombol Kembali ke Home */
+        .back-home {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, rgba(255, 100, 200, 0.8), rgba(100, 50, 200, 0.8));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
             display: flex;
-            max-width: 1200px;
-            margin: 80px auto;
-            gap: 30px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* KOLOM KIRI — TEKS */
-        .text-box {
-            flex: 1;
-            padding: 30px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 20px;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
 
-        .text-box h1 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+        .back-home:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 100, 200, 0.4);
+            background: linear-gradient(135deg, rgba(255, 120, 220, 0.9), rgba(120, 70, 220, 0.9));
         }
 
-        .text-box p {
-            margin-bottom: 15px;
-            line-height: 1.6;
+        /* Container utama */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+            padding-top: 100px;
         }
 
-        /* TOMBOL KEMBALI */
-        .back-btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: linear-gradient(45deg, #e100ff, #007efc);
-            border-radius: 10px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .back-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* KOLOM KANAN — FOTO */
-        .image-box-right {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .image-box-right img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-        }
-
-        .caption {
+        /* Header dengan animasi */
+        header {
             text-align: center;
-            font-size: 14px;
-            color: #fff;
-            opacity: 0.9;
+            margin-bottom: 50px;
+            animation: slideDown 1.5s ease-out;
         }
 
-        .extra-gallery {
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #ff64c8, #6432ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(255, 100, 200, 0.5);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 100, 200, 0.5);
+            }
+            to {
+                text-shadow: 0 0 40px rgba(255, 100, 200, 0.8), 0 0 60px rgba(100, 50, 255, 0.6);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #d9a3ff;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        /* Konten utama */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* KIRI: MAIN CHARACTER (MITSUHA & TAKI) */
+        .main-character {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            animation: floatUpDown 4s infinite ease-in-out;
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .character-card {
+            background: rgba(40, 20, 60, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s, box-shadow 0.5s;
+            border: 2px solid rgba(255, 100, 200, 0.3);
+            height: 100%;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 100, 200, 0.4);
+        }
+
+        .character-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 3px solid #ff64c8;
+        }
+
+        .character-info {
+            padding: 25px;
+        }
+
+        .character-name {
+            font-size: 2.2rem;
+            color: #ff99e6;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 153, 230, 0.5);
+        }
+
+        .character-title {
+            font-size: 1.1rem;
+            color: #a3d9ff;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .character-desc {
+            line-height: 1.6;
+            color: #e0e0ff;
+        }
+
+        /* KANAN: 4 FOTO SAMPING - GALERI */
+        .side-locations {
+            flex: 1;
+            min-width: 300px;
             display: flex;
             flex-direction: column;
+            gap: 25px;
+        }
+
+        .location-card {
+            background: rgba(50, 30, 70, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 150, 220, 0.2);
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .location-card:nth-child(1) { animation-delay: 0.2s; }
+        .location-card:nth-child(2) { animation-delay: 0.4s; }
+        .location-card:nth-child(3) { animation-delay: 0.6s; }
+        .location-card:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(255, 150, 220, 0.3);
+            border-color: rgba(255, 150, 220, 0.5);
+        }
+
+        .location-img-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .location-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .location-card:hover .location-img {
+            transform: scale(1.1);
+        }
+
+        .location-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 100, 200, 0.8);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .location-info {
+            padding: 20px;
+        }
+
+        .location-name {
+            font-size: 1.4rem;
+            color: #99ffcc;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location-name i {
+            color: #ffe6a3;
+        }
+
+        .location-desc {
+            line-height: 1.5;
+            color: #e0e0ff;
+            font-size: 0.95rem;
+        }
+
+        .location-highlight {
+            color: #ffff99;
+            font-weight: bold;
+        }
+
+        .location-caption {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sinopsis section di BAWAH */
+        .synopsis {
+            background: rgba(30, 15, 50, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border-left: 5px solid #ff64c8;
+            animation: slideInRight 1.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ff99e6;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
             gap: 15px;
         }
 
-        .extra-gallery img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.35);
-            transition: transform 0.3s ease;
+        .section-title i {
+            font-size: 2rem;
         }
 
-        .extra-gallery img:hover {
-            transform: scale(1.05);
+        .synopsis-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #f0f0ff;
+            text-align: justify;
         }
 
-        /* RESPONSIVE */
-        @media screen and (max-width: 900px) {
-            .destinasi-wrapper {
+        .highlight {
+            color: #ffff99;
+            font-weight: bold;
+        }
+
+        /* Tombol audio mini tersembunyi */
+        .audio-mini-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 100, 200, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0.3;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .audio-mini-toggle:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #d0a3f0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 100, 200, 0.3);
+            margin-top: 50px;
+        }
+
+        .yourname-stamp {
+            font-size: 2rem;
+            color: #ff64c8;
+            margin-bottom: 10px;
+            animation: rotate 10s infinite linear;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsif */
+        @media (max-width: 1100px) {
+            .main-content {
                 flex-direction: column;
             }
+            
+            .back-home {
+                top: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
 
-            .image-box-right, .text-box {
-                width: 100%;
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .back-home {
+                top: 15px;
+                left: 15px;
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .audio-mini-toggle {
+                bottom: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .character-name, .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 20px;
+                padding-top: 90px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Tombol Kembali ke Home -->
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        <span>Kembali ke Home</span>
+    </a>
 
-    <!-- BACKSOUND AUTOPLAY -->
-    <audio id="bgm" loop>
+    <!-- Partikel animasi di latar belakang -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">君の名は。</h1>
+            <p class="subtitle">Suga Shrine – Inspirasi Kimi no Na wa</p>
+        </header>
+
+        <div class="main-content">
+            <!-- KIRI: MAIN CHARACTER (MITSUHA & TAKI) -->
+            <div class="main-character">
+                <div class="character-card">
+                    <!-- FOTO MITSUHA & TAKI -->
+                    <img src="suga1.jpeg" alt="Mitsuha & Taki" class="character-img">
+                    <!-- CAPTION DI BAWAH FOTO -->
+                    <div class="location-caption">"Kami bertukar tubuh, mencari, dan bertemu di antara waktu yang berputar" - Kimi no Na wa</div>
+                    <div class="character-info">
+                        <!-- NAMA DAN TITLE -->
+                        <h2 class="character-name">Mitsuha & Taki</h2>
+                        <p class="character-title">Protagonis - Kimi no Na wa (Your Name)</p>
+                        <!-- DESKRIPSI KARAKTER -->
+                        <p class="character-desc">
+                            Mitsuha Miyamizu adalah gadis SMA yang tinggal di desa kecil Itomori yang bosan dengan kehidupan pedesaan. 
+                            Taki Tachibana adalah siswa SMA di Tokyo yang bekerja paruh waktu di restoran. Mereka terhubung melalui 
+                            fenomena misterius bertukar tubuh, belajar memahami kehidupan satu sama lain, dan berusaha mengubah takdir 
+                            yang menyatukan mereka melintasi ruang dan waktu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KANAN: 4 Foto samping - GALERI -->
+            <div class="side-locations">
+                <!-- Foto 1: Gerbang Torii -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Simbol</span>
+                        <img src="suga2.jpeg" alt="Gerbang Torii" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-torii-gate"></i> Gerbang Torii</h3>
+                        <p class="location-desc">
+                            Gerbang Torii merah ikonik di Suga Shrine yang menjadi landmark penting dalam film.
+                        </p>
+                    </div>
+                    <div class="location-caption">Gerbang Torii Merah</div>
+                </div>
+                
+                <!-- Foto 2: Pemandangan Kota -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Pemandangan</span>
+                        <img src="suga3.jpeg" alt="Pemandangan Kota" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-city"></i> Pemandangan Tokyo</h3>
+                        <p class="location-desc">
+                            Pemandangan kota Tokyo dari Suga Shrine dengan panorama urban yang memukau.
+                        </p>
+                    </div>
+                    <div class="location-caption">Pemandangan Kota dari Suga Shrine</div>
+                </div>
+                
+                <!-- Foto 3: Spot Foto -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Spot Foto</span>
+                        <img src="suga4.jpeg" alt="Spot Foto" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-camera"></i> Spot Foto Ikonik</h3>
+                        <p class="location-desc">
+                            Spot foto populer di tangga Suga Shrine yang sering dikunjungi penggemar anime.
+                        </p>
+                    </div>
+                    <div class="location-caption">Spot Foto Populer Penggemar Anime</div>
+                </div>
+                
+                <!-- Foto 4: Tangga Suga Shrine (dari background) -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Lokasi</span>
+                        <img src="suga.jpeg" alt="Tangga Suga Shrine" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-stairs"></i> Tangga Suga Shrine</h3>
+                        <p class="location-desc">
+                            Tangga bersejarah di Suga Shrine yang menjadi setting romantis dalam Kimi no Na wa.
+                        </p>
+                    </div>
+                    <div class="location-caption">Tangga Suga Shrine - Setting Film</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SINOPSIS SECTION DI BAWAH -->
+        <div class="synopsis">
+            <h2 class="section-title"><i class="fas fa-scroll"></i> Suga Shrine & Kimi no Na wa</h2>
+            <p class="synopsis-text">
+                <span class="highlight">Suga Shrine</span> di Tokyo menjadi salah satu lokasi ikonik dalam film anime <span class="highlight">Kimi no Na wa (Your Name)</span>. 
+                Tempat ini terkenal dengan tangga dan gerbang torii merahnya, yang menjadi spot foto populer bagi penggemar anime.
+                <br><br>
+                Pengunjung dapat menelusuri tangga berliku, menikmati pemandangan kota di sekitarnya, dan merasakan 
+                atmosfer romantis serta magis yang terinspirasi dari film. Setiap sudut tempat ini menghadirkan sensasi 
+                seperti berada di dunia <span class="highlight">Mitsuha dan Taki</span>.
+                <br><br>
+                <span class="highlight">Kimi no Na wa</span> menceritakan Mitsuha, seorang gadis desa yang merasa jenuh dengan kehidupan di kota kecilnya, 
+                dan Taki, seorang pemuda yang tinggal di Tokyo. Mereka secara misterius saling bertukar tubuh, belajar 
+                memahami kehidupan satu sama lain, dan berusaha mengubah nasib dengan kekuatan waktu dan takdir. Cerita 
+                ini penuh emosi, romansa, dan visual memukau yang menakjubkan.
+            </p>
+        </div>
+    </div>
+
+    <!-- Tombol audio mini tersembunyi (hanya ikon kecil) -->
+    <div class="audio-mini-toggle" id="audioToggle" title="Toggle Audio">
+        <i class="fas fa-volume-up" id="audioIcon"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="yourname-stamp">
+            <i class="fas fa-redo"></i>
+        </div>
+        <p>Suga Shrine – Inspirasi Kimi no Na wa © 2025 | Destinasi Romantis Your Name</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #d0a3f0;">
+            <i class="fas fa-music"></i> Backsound diputar otomatis | Klik ikon speaker di pojok kanan bawah untuk mute/unmute
+        </p>
+    </footer>
+
+    <!-- Audio untuk backsound (tersembunyi) -->
+    <audio id="backgroundAudio" loop autoplay>
+        <!-- Sumber audio dari kode asli -->
         <source src="sparkle.mp3" type="audio/mp3">
     </audio>
 
     <script>
-        const bgm = document.getElementById("bgm");
-        bgm.volume = 0.7;
+        // Inisialisasi partikel latar belakang
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 20 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                const colors = ['rgba(255, 100, 200, 0.5)', 'rgba(200, 100, 255, 0.5)', 'rgba(255, 150, 230, 0.5)'];
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
 
-        document.addEventListener("DOMContentLoaded", () => {
+        // Kontrol audio - SISTEM SAMA DENGAN KODE ASLI
+        const audio = document.getElementById('backgroundAudio');
+        const audioToggle = document.getElementById('audioToggle');
+        const audioIcon = document.getElementById('audioIcon');
+        
+        // Atur volume default seperti kode asli
+        audio.volume = 0.7;
+        
+        // Status audio awal
+        let isAudioPlaying = true;
+        
+        // Fungsi untuk mencoba memutar audio dengan sistem overlay klik (sama dengan kode asli)
+        function initializeAudio() {
+            // Buat overlay transparan untuk klik pertama
             const overlay = document.createElement('div');
             overlay.style.position = 'fixed';
-            overlay.style.top = 0;
-            overlay.style.left = 0;
+            overlay.style.top = '0';
+            overlay.style.left = '0';
             overlay.style.width = '100%';
             overlay.style.height = '100%';
-            overlay.style.zIndex = 9999;
+            overlay.style.zIndex = '9999';
             overlay.style.cursor = 'pointer';
             overlay.style.background = 'transparent';
             overlay.title = 'Klik untuk memutar musik';
             document.body.appendChild(overlay);
 
             overlay.addEventListener('click', () => {
-                bgm.play();
+                // Coba putar audio
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log("Audio berhasil diputar");
+                        isAudioPlaying = true;
+                        audioIcon.className = 'fas fa-volume-up';
+                        audioToggle.title = "Klik untuk mute audio";
+                    }).catch(error => {
+                        console.log("Autoplay diblokir");
+                        isAudioPlaying = false;
+                        audioIcon.className = 'fas fa-volume-mute';
+                        audioToggle.title = "Klik untuk memutar audio (autoplay diblokir)";
+                    });
+                }
+                
+                // Hapus overlay setelah klik
                 document.body.removeChild(overlay);
             });
+        }
+        
+        // Event listener untuk toggle audio mini
+        audioToggle.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                isAudioPlaying = true;
+                audioIcon.className = 'fas fa-volume-up';
+                audioToggle.title = "Klik untuk mute audio";
+            } else {
+                audio.pause();
+                isAudioPlaying = false;
+                audioIcon.className = 'fas fa-volume-mute';
+                audioToggle.title = "Klik untuk unmute audio";
+            }
+        });
+        
+        // Efek hover untuk kartu foto
+        document.querySelectorAll('.location-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.03) translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+        
+        // Inisialisasi saat halaman dimuat
+        window.onload = function() {
+            createParticles();
+            initializeAudio(); // Inisialisasi sistem audio
+            
+            // Efek badge berkedip
+            setInterval(() => {
+                document.querySelectorAll('.location-badge').forEach(badge => {
+                    badge.style.backgroundColor = `rgba(255, 100, 200, ${0.7 + Math.random() * 0.3})`;
+                });
+            }, 2000);
+        };
+        
+        // Efek parallax scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            
+            document.querySelector('.main-character').style.transform = `translateY(${rate}px)`;
+            
+            document.querySelectorAll('.location-card').forEach((card, index) => {
+                const speed = 0.1 + (index * 0.05);
+                card.style.transform = `translateY(${rate * speed}px) scale(1)`;
+            });
+        });
+        
+        // Deteksi interaksi pengguna untuk audio
+        document.addEventListener('click', function() {
+            if (audio.paused && !isAudioPlaying) {
+                audio.play();
+                isAudioPlaying = true;
+                audioIcon.className = 'fas fa-volume-up';
+            }
         });
     </script>
-
-    <!-- PARALLAX BACKGROUND -->
-    <div class="parallax"></div>
-    <div class="overlay"></div>
-
-    <!-- LAYOUT 2 KOLOM -->
-    <div class="destinasi-wrapper">
-
-        <!-- KOLOM KIRI -->
-        <div class="text-box">
-            <h1>Suga Shrine – Inspirasi Kimi no Na wa</h1>
-
-            <p>
-                Suga Shrine di Tokyo menjadi salah satu lokasi ikonik dalam film anime Kimi no Na wa (Your Name). 
-                Tempat ini terkenal dengan tangga dan gerbang torii merahnya, yang menjadi spot foto populer bagi penggemar anime.
-            </p>
-
-            <p>
-                Pengunjung dapat menelusuri tangga berliku, menikmati pemandangan kota di sekitarnya, dan merasakan 
-                atmosfer romantis serta magis yang terinspirasi dari film. Setiap sudut tempat ini menghadirkan sensasi 
-                seperti berada di dunia Mitsuha dan Taki.
-            </p>
-
-            <h3>Sinopsis Kimi no Na wa:</h3>
-            <p>
-                Kimi no Na wa menceritakan Mitsuha, seorang gadis desa yang merasa jenuh dengan kehidupan di kota kecilnya, 
-                dan Taki, seorang pemuda yang tinggal di Tokyo. Mereka secara misterius saling bertukar tubuh, belajar 
-                memahami kehidupan satu sama lain, dan berusaha mengubah nasib dengan kekuatan waktu dan takdir. Cerita 
-                ini penuh emosi, romansa, dan visual memukau yang menakjubkan.
-            </p>
-            
-
-            <a href="index.html" class="back-btn">Kembali</a>
-        </div>
-
-        <!-- KOLOM KANAN -->
-        <div class="image-box-right">
-            <img src="suga1.jpeg" alt="Suga Shrine Tokyo">
-            <div class="caption">Taki & Mitsuha</div>
-
-            <div class="extra-gallery">
-                <img src="suga2.jpeg" alt="Gerbang Torii">
-                <div class="caption">Gerbang Torii Merah</div>
-
-                <img src="suga3.jpeg" alt="Pemandangan Kota">
-                <div class="caption">Pemandangan Kota dari Suga Shrine</div>
-
-                <img src="suga4.jpeg" alt="Spot Foto">
-                <div class="caption">Spot Foto Populer Penggemar Anime</div>
-            </div>
-        </div>
-
-    </div>
-
 </body>
 </html>
-
