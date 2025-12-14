@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece - Real World Locations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(5, 15, 40, 0.85), rgba(10, 25, 60, 0.9)), 
+                        url('https://images.alphacoders.com/133/thumb-1920-1337302.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Animasi latar belakang ombak */
+        .wave-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.1) 0%, transparent 70%);
+            border-radius: 45%;
+            animation: wave-animation 15s infinite linear;
+            opacity: 0.6;
+        }
+
+        .wave:nth-child(1) {
+            top: -150%;
+            left: -100%;
+            animation-duration: 20s;
+            animation-delay: 0s;
+        }
+
+        .wave:nth-child(2) {
+            top: -130%;
+            left: -90%;
+            animation-duration: 25s;
+            animation-delay: -5s;
+            opacity: 0.4;
+        }
+
+        .wave:nth-child(3) {
+            top: -140%;
+            left: -80%;
+            animation-duration: 30s;
+            animation-delay: -10s;
+            opacity: 0.3;
+        }
+
+        @keyframes wave-animation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Container utama */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+            padding-top: 100px; /* Memberi ruang untuk tombol kembali */
+        }
+
+        /* Tombol Kembali ke Home */
+        .back-home {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.9), rgba(255, 50, 0, 0.9));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-home:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 165, 0, 0.5);
+            background: linear-gradient(135deg, rgba(255, 180, 50, 0.9), rgba(255, 80, 0, 0.9));
+        }
+
+        .back-home i {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .back-home:hover i {
+            transform: translateX(-5px);
+        }
+
+        /* Header dengan animasi */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: slideDown 1.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #ffa500, #ff4500, #ff0000);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(255, 165, 0, 0.7);
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 165, 0, 0.7);
+            }
+            to {
+                text-shadow: 0 0 40px rgba(255, 165, 0, 0.9), 0 0 60px rgba(255, 69, 0, 0.7);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #a3d9ff;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .pirate-flag {
+            font-size: 3rem;
+            color: #ff4500;
+            animation: float 4s infinite ease-in-out;
+            margin-bottom: 10px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        /* Konten utama */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Kapal Thousand Sunny (kiri) */
+        .main-ship {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            animation: floatShip 6s infinite ease-in-out;
+        }
+
+        @keyframes floatShip {
+            0%, 100% {
+                transform: translateY(0) rotate(1deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-5px) rotate(-1deg);
+            }
+            75% {
+                transform: translateY(-10px) rotate(0deg);
+            }
+        }
+
+        .ship-card {
+            background: rgba(10, 20, 50, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            transition: transform 0.5s, box-shadow 0.5s;
+            border: 3px solid rgba(255, 165, 0, 0.4);
+            height: 100%;
+        }
+
+        .ship-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 165, 0, 0.4);
+        }
+
+        .ship-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 3px solid #ff4500;
+        }
+
+        .ship-info {
+            padding: 25px;
+        }
+
+        .ship-name {
+            font-size: 2.3rem;
+            color: #ff9900;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 153, 0, 0.6);
+        }
+
+        .ship-title {
+            font-size: 1.2rem;
+            color: #66ccff;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .ship-desc {
+            line-height: 1.6;
+            color: #d0e0ff;
+        }
+
+        /* 4 Lokasi samping (kanan) */
+        .side-locations {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .location-card {
+            background: rgba(15, 30, 60, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s;
+            border: 2px solid rgba(0, 150, 255, 0.3);
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .location-card:nth-child(1) { animation-delay: 0.2s; }
+        .location-card:nth-child(2) { animation-delay: 0.4s; }
+        .location-card:nth-child(3) { animation-delay: 0.6s; }
+        .location-card:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location-card:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 150, 255, 0.4);
+            border-color: rgba(0, 200, 255, 0.6);
+        }
+
+        .location-img-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .location-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .location-card:hover .location-img {
+            transform: scale(1.1);
+        }
+
+        .location-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 69, 0, 0.9);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .location-info {
+            padding: 20px;
+        }
+
+        .location-name {
+            font-size: 1.5rem;
+            color: #66ffcc;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location-name i {
+            color: #ffcc66;
+        }
+
+        .location-desc {
+            line-height: 1.5;
+            color: #d0e0ff;
+            font-size: 0.95rem;
+        }
+
+        .location-highlight {
+            color: #ff9900;
+            font-weight: bold;
+        }
+
+        .location-caption {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sinopsis section */
+        .synopsis {
+            background: rgba(5, 15, 40, 0.85);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            border-left: 5px solid #ff4500;
+            animation: slideInRight 1.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ff9900;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            font-size: 2rem;
+        }
+
+        .synopsis-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #e0f0ff;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        /* Tombol audio mini tersembunyi */
+        .audio-mini-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 69, 0, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0.3;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .audio-mini-toggle:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #a0c0e0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 165, 0, 0.3);
+            margin-top: 50px;
+        }
+
+        .op-stamp {
+            font-size: 2rem;
+            color: #ff4500;
+            margin-bottom: 10px;
+            animation: rotate 10s infinite linear;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsif */
+        @media (max-width: 1100px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .back-home {
+                top: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .back-home {
+                top: 15px;
+                left: 15px;
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .pirate-flag {
+                font-size: 2.2rem;
+            }
+            
+            .audio-mini-toggle {
+                bottom: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .ship-name, .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 20px;
+                padding-top: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Tombol Kembali ke Home -->
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        <span>Kembali ke Home</span>
+    </a>
+
+    <!-- Ombak animasi di latar belakang -->
+    <div class="wave-particles">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="pirate-flag">
+                <i class="fas fa-skull-crossbones"></i>
+            </div>
+            <h1 class="logo">ONE PIECE</h1>
+            <p class="subtitle">Lokasi Nyata yang Menginspirasi Petualangan Bajak Laut Topi Jerami</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Kapal Thousand Sunny (kiri) -->
+            <div class="main-ship">
+                <div class="ship-card">
+                    <img src="https://images7.alphacoders.com/134/thumb-1920-1348149.png" alt="Thousand Sunny" class="ship-img">
+                    <div class="location-caption">"Saya akan menjadi Raja Bajak Laut!" - Monkey D. Luffy</div>
+                    <div class="ship-info">
+                        <h2 class="ship-name">Thousand Sunny</h2>
+                        <p class="ship-title">Kapal Kelompok Bajak Laut Topi Jerami</p>
+                        <p class="ship-desc">
+                            Kapal kedua Kelompok Bajak Laut Topi Jerami yang dibangun oleh Franky setelah Going Merry tidak bisa diperbaiki lagi. 
+                            Thousand Sunny dilengkapi dengan berbagai fitur canggih seperti Gaon Cannon, Coup de Burst, dan ruangan khusus untuk setiap anggota kru.
+                            Kapal ini menjadi saksi petualangan menuju akhir Grand Line dan pencarian One Piece.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 Lokasi samping (kanan) -->
+            <div class="side-locations">
+                <!-- Lokasi 1: Kastil Osaka -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Wano Kuni</span>
+                        <img src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kastil Osaka" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-landmark"></i> Kastil Osaka, Jepang</h3>
+                        <p class="location-desc">
+                            Menginspirasi desain <span class="location-highlight">Kastil di Wano Kuni</span>, negeri samurai tertutup yang dikunjungi 
+                            Luffy dan kawan-kawan. Arsitektur tradisional Jepang dengan menara utama yang megah menjadi ciri khas lokasi ini.
+                        </p>
+                    </div>
+                    <div class="location-caption">Inspirasi untuk Kastil di Wano Country (arc Wano Kuni). Arsitektur tradisional Jepang.</div>
+                </div>
+                
+                <!-- Lokasi 2: Venice, Italia -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Water 7</span>
+                        <img src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Venice, Italia" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-water"></i> Venice, Italia</h3>
+                        <p class="location-desc">
+                            Inspirasi utama untuk <span class="location-highlight">Water 7</span>, kota kanal terkenal di dunia One Piece 
+                            tempat Galley-La Company berada dan Thousand Sunny dibangun. Sistem transportasi utama menggunakan kanal.
+                        </p>
+                    </div>
+                    <div class="location-caption">Inspirasi untuk Water 7 (kota kanal). Spot: kanal, gondola, arsitektur Renaissance.</div>
+                </div>
+                
+                <!-- Lokasi 3: Santorini, Yunani -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Whole Cake Island</span>
+                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Santorini, Yunani" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-ice-cream"></i> Santorini, Yunani</h3>
+                        <p class="location-desc">
+                            Menginspirasi beberapa elemen <span class="location-highlight">Whole Cake Island</span>, pulau yang diperintah oleh 
+                            Charlotte Linlin (Big Mom). Bangunan putih dengan kubah biru dan pemandangan laut yang indah menjadi ciri khasnya.
+                        </p>
+                    </div>
+                    <div class="location-caption">Inspirasi untuk Whole Cake Island (Big Mom's territory). Arsitektur khas Mediterania.</div>
+                </div>
+                
+                <!-- Lokasi 4: Piramida Mesir -->
+                <div class="location-card">
+                    <div class="location-img-container">
+                        <span class="location-badge">Alabasta</span>
+                        <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Piramida Mesir" class="location-img">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-name"><i class="fas fa-monument"></i> Piramida Giza, Mesir</h3>
+                        <p class="location-desc">
+                            Inspirasi untuk berbagai struktur di <span class="location-highlight">Kerajaan Alabasta</span>, terutama 
+                            reruntuhan dan makam kuno yang muncul dalam arc Alabasta. Nuansa padang pasir dan arsitektur Mesir kuno terasa kuat.
+                        </p>
+                    </div>
+                    <div class="location-caption">Inspirasi untuk struktur kuno di Alabasta (arc Alabasta). Nuansa padang pasir dan piramida.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sinopsis Section -->
+        <div class="synopsis">
+            <h2 class="section-title"><i class="fas fa-map"></i> Dunia Nyata dalam Petualangan One Piece</h2>
+            <p class="synopsis-text">
+                <span class="highlight">One Piece</span> karya Eiichiro Oda terkenal dengan dunia yang luas dan beragam, yang banyak diinspirasi oleh 
+                <span class="highlight">lokasi nyata di dunia kita</span>. Oda menggabungkan elemen budaya, arsitektur, dan geografi dari berbagai negara 
+                untuk menciptakan pulau-pulau unik di Grand Line yang masing-masing memiliki karakteristik berbeda.
+                <br><br>
+                <span class="highlight">Venice, Italia</span> dengan kanal-kanalnya yang indah menjadi inspirasi utama untuk <span class="highlight">Water 7</span>, 
+                kota galangan kapal yang penuh misteri. <span class="highlight">Kastil Osaka</span> memberikan nuansa tradisional Jepang yang kuat untuk 
+                <span class="highlight">Wano Kuni</span>, negeri samurai yang terisolasi. Keindahan <span class="highlight">Santorini, Yunani</span> 
+                tercermin dalam desain <span class="highlight">Whole Cake Island</span>, sementara keagungan <span class="highlight">Piramida Mesir</span> 
+                menginspirasi struktur kuno di <span class="highlight">Kerajaan Alabasta</span>.
+                <br><br>
+                Dengan menggabungkan inspirasi dari seluruh dunia, Oda menciptakan alam semesta One Piece yang kaya dan memikat, 
+                di mana setiap pulau menawarkan petualangan baru dan tantangan unik bagi Luffy dan Kelompok Bajak Laut Topi Jerami dalam 
+                perjalanan mereka menuju One Piece dan gelar Raja Bajak Laut.
+            </p>
+        </div>
+    </div>
+
+    <!-- Tombol audio mini tersembunyi (hanya ikon kecil) -->
+    <div class="audio-mini-toggle" id="audioToggle" title="Toggle Audio">
+        <i class="fas fa-volume-up" id="audioIcon"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="op-stamp">
+            <i class="fas fa-anchor"></i>
+        </div>
+        <p>One Piece Real World Locations © 2025 | Eksplorasi Dunia Nyata yang Menginspirasi Petualangan Luffy</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #888;">
+            <i class="fas fa-music"></i> Backsound diputar otomatis | Klik ikon speaker di pojok kanan bawah untuk mute/unmute
+        </p>
+    </footer>
+
+    <!-- Audio untuk backsound (tersembunyi) -->
+    <audio id="backgroundAudio" loop autoplay>
+        <!-- Sumber audio dengan fallback -->
+        <source src="https://assets.codepen.io/1468070/one-piece-theme.mp3" type="audio/mpeg">
+        <source src="one-piece.mp3" type="audio/mpeg">
+        <!-- Fallback audio dari sumber lain jika yang pertama gagal -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Inisialisasi efek ombak latar belakang
+        function initWaves() {
+            const waves = document.querySelectorAll('.wave');
+            waves.forEach((wave, index) => {
+                // Atur ukuran dan posisi acak untuk setiap ombak
+                const size = 40 + Math.random() * 20;
+                wave.style.width = `${size}%`;
+                wave.style.height = `${size}%`;
+                
+                // Delay animasi yang berbeda untuk setiap ombak
+                const delay = index * 5;
+                wave.style.animationDelay = `${delay}s`;
+            });
+        }
+
+        // Kontrol audio TERSEMBUNYI
+        const audio = document.getElementById('backgroundAudio');
+        const audioToggle = document.getElementById('audioToggle');
+        const audioIcon = document.getElementById('audioIcon');
+        
+        // Atur volume default
+        audio.volume = 0.5; // Volume 50%
+        
+        // Status audio awal
+        let isAudioPlaying = true;
+        
+        // Fungsi untuk mencoba memutar audio dengan penanganan autoplay policy
+        function tryPlayAudio() {
+            // Cek jika audio sudah diputar
+            if (audio.paused) {
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log("Audio berhasil diputar otomatis");
+                        isAudioPlaying = true;
+                        audioIcon.className = 'fas fa-volume-up';
+                    }).catch(error => {
+                        console.log("Autoplay diblokir browser, menunggu interaksi pengguna");
+                        isAudioPlaying = false;
+                        audioIcon.className = 'fas fa-volume-mute';
+                        
+                        // Tampilkan pesan subtle
+                        audioToggle.title = "Klik untuk memutar audio (autoplay diblokir)";
+                    });
+                }
+            }
+        }
+        
+        // Coba putar audio saat halaman dimuat
+        window.addEventListener('load', function() {
+            // Beri delay sedikit untuk memastikan halaman sudah siap
+            setTimeout(tryPlayAudio, 500);
+            initWaves();
+        });
+        
+        // Event listener untuk toggle audio mini
+        audioToggle.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                isAudioPlaying = true;
+                audioIcon.className = 'fas fa-volume-up';
+                audioToggle.title = "Klik untuk mute audio";
+            } else {
+                audio.pause();
+                isAudioPlaying = false;
+                audioIcon.className = 'fas fa-volume-mute';
+                audioToggle.title = "Klik untuk unmute audio";
+            }
+        });
+        
+        // Efek hover untuk kartu lokasi
+        document.querySelectorAll('.location-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.03) translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+        
+        // Efek hover untuk tombol kembali
+        const backButton = document.querySelector('.back-home');
+        backButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.05)';
+        });
+        
+        backButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        // Inisialisasi saat halaman dimuat
+        window.onload = function() {
+            // Efek tipe untuk sinopsis
+            const synopsisText = document.querySelector('.synopsis-text');
+            const originalText = synopsisText.textContent;
+            synopsisText.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    synopsisText.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 10);
+                }
+            }
+            
+            // Mulai efek ketikan setelah delay
+            setTimeout(typeWriter, 1000);
+            
+            // Efek badge berkedip
+            setInterval(() => {
+                document.querySelectorAll('.location-badge').forEach(badge => {
+                    const colors = [
+                        'rgba(255, 69, 0, 0.9)',
+                        'rgba(255, 165, 0, 0.9)',
+                        'rgba(0, 150, 255, 0.9)'
+                    ];
+                    badge.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                });
+            }, 2000);
+        };
+        
+        // Efek parallax scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            
+            document.querySelector('.main-ship').style.transform = `translateY(${rate}px) rotate(1deg)`;
+            
+            // Efek parallax untuk kartu lokasi
+            document.querySelectorAll('.location-card').forEach((card, index) => {
+                const speed = 0.1 + (index * 0.05);
+                card.style.transform = `translateY(${rate * speed}px) scale(1)`;
+            });
+            
+            // Efek pada ombak
+            document.querySelectorAll('.wave').forEach((wave, index) => {
+                const waveSpeed = 0.05 + (index * 0.02);
+                wave.style.transform = `rotate(${scrolled * waveSpeed}deg)`;
+            });
+        });
+        
+        // Deteksi interaksi pengguna untuk memutar audio jika autoplay diblokir
+        document.addEventListener('click', function() {
+            if (audio.paused && !isAudioPlaying) {
+                tryPlayAudio();
+            }
+        });
+        
+        // Animasi untuk kapal (mengapung)
+        function animateShip() {
+            const ship = document.querySelector('.main-ship');
+            let floatDirection = 1;
+            let floatAmount = 0;
+            
+            setInterval(() => {
+                floatAmount += 0.5 * floatDirection;
+                
+                if (floatAmount > 15 || floatAmount < 0) {
+                    floatDirection *= -1;
+                }
+                
+                ship.style.transform = `translateY(${floatAmount}px) rotate(${floatAmount * 0.05}deg)`;
+            }, 100);
+        }
+        
+        // Mulai animasi kapal
+        setTimeout(animateShip, 2000);
+    </script>
+</body>
+</html>
