@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Piece - Real World Locations</title>
+    <title>One Piece - Lokasi Nyata di Jepang</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -23,8 +23,8 @@
             backdrop-filter: blur(8px);
         }
 
-        /* Animasi latar belakang ombak */
-        .wave-particles {
+        /* Animasi latar belakang partikel */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -32,48 +32,29 @@
             height: 100%;
             z-index: -1;
             pointer-events: none;
-            overflow: hidden;
         }
 
-        .wave {
+        .particle {
             position: absolute;
-            width: 300%;
-            height: 300%;
-            background: radial-gradient(circle, rgba(0, 150, 255, 0.1) 0%, transparent 70%);
-            border-radius: 45%;
-            animation: wave-animation 15s infinite linear;
-            opacity: 0.6;
+            background-color: rgba(255, 165, 0, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
         }
 
-        .wave:nth-child(1) {
-            top: -150%;
-            left: -100%;
-            animation-duration: 20s;
-            animation-delay: 0s;
-        }
-
-        .wave:nth-child(2) {
-            top: -130%;
-            left: -90%;
-            animation-duration: 25s;
-            animation-delay: -5s;
-            opacity: 0.4;
-        }
-
-        .wave:nth-child(3) {
-            top: -140%;
-            left: -80%;
-            animation-duration: 30s;
-            animation-delay: -10s;
-            opacity: 0.3;
-        }
-
-        @keyframes wave-animation {
+        @keyframes float {
             0% {
-                transform: rotate(0deg);
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
             }
             100% {
-                transform: rotate(360deg);
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
             }
         }
 
@@ -90,7 +71,7 @@
             position: fixed;
             top: 30px;
             left: 30px;
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.9), rgba(255, 50, 0, 0.9));
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.8), rgba(255, 69, 0, 0.8));
             color: white;
             padding: 12px 25px;
             border-radius: 30px;
@@ -108,7 +89,7 @@
 
         .back-home:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 165, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(255, 165, 0, 0.4);
             background: linear-gradient(135deg, rgba(255, 180, 50, 0.9), rgba(255, 80, 0, 0.9));
         }
 
@@ -202,72 +183,66 @@
             }
         }
 
-        /* Kapal Thousand Sunny (kiri) */
-        .main-ship {
+        /* Karakter utama (kiri) */
+        .main-character {
             flex: 1;
             min-width: 300px;
             position: relative;
-            animation: floatShip 6s infinite ease-in-out;
+            animation: floatUpDown 4s infinite ease-in-out;
         }
 
-        @keyframes floatShip {
+        @keyframes floatUpDown {
             0%, 100% {
-                transform: translateY(0) rotate(1deg);
-            }
-            25% {
-                transform: translateY(-15px) rotate(0deg);
+                transform: translateY(0);
             }
             50% {
-                transform: translateY(-5px) rotate(-1deg);
-            }
-            75% {
-                transform: translateY(-10px) rotate(0deg);
+                transform: translateY(-20px);
             }
         }
 
-        .ship-card {
-            background: rgba(10, 20, 50, 0.8);
+        .character-card {
+            background: rgba(20, 10, 40, 0.7);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             transition: transform 0.5s, box-shadow 0.5s;
-            border: 3px solid rgba(255, 165, 0, 0.4);
+            border: 3px solid rgba(255, 165, 0, 0.3);
             height: 100%;
         }
 
-        .ship-card:hover {
-            transform: translateY(-10px) scale(1.02);
+        .character-card:hover {
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(255, 165, 0, 0.4);
         }
 
-        .ship-img {
+        .character-img {
             width: 100%;
             height: 400px;
             object-fit: cover;
             border-bottom: 3px solid #ff4500;
         }
 
-        .ship-info {
+        .character-info {
             padding: 25px;
         }
 
-        .ship-name {
-            font-size: 2.3rem;
+        .character-name {
+            font-size: 2.2rem;
             color: #ff9900;
             margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 153, 0, 0.6);
+            text-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
         }
 
-        .ship-title {
-            font-size: 1.2rem;
+        .character-title {
+            font-size: 1.1rem;
             color: #66ccff;
             margin-bottom: 15px;
             font-style: italic;
         }
 
-        .ship-desc {
+        .character-desc {
             line-height: 1.6;
-            color: #d0e0ff;
+            color: #d0d0e0;
         }
 
         /* 4 Lokasi samping (kanan) */
@@ -280,12 +255,12 @@
         }
 
         .location-card {
-            background: rgba(15, 30, 60, 0.8);
+            background: rgba(25, 15, 45, 0.7);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             transition: all 0.4s;
-            border: 2px solid rgba(0, 150, 255, 0.3);
+            border: 2px solid rgba(0, 150, 255, 0.2);
             animation: fadeInUp 1s ease-out;
             animation-fill-mode: both;
         }
@@ -308,8 +283,8 @@
 
         .location-card:hover {
             transform: scale(1.03) translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 150, 255, 0.4);
-            border-color: rgba(0, 200, 255, 0.6);
+            box-shadow: 0 15px 30px rgba(0, 150, 255, 0.3);
+            border-color: rgba(0, 200, 255, 0.5);
         }
 
         .location-img-container {
@@ -334,7 +309,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(255, 69, 0, 0.9);
+            background: rgba(255, 69, 0, 0.8);
             color: white;
             padding: 5px 15px;
             border-radius: 20px;
@@ -348,7 +323,7 @@
         }
 
         .location-name {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #66ffcc;
             margin-bottom: 10px;
             display: flex;
@@ -362,7 +337,7 @@
 
         .location-desc {
             line-height: 1.5;
-            color: #d0e0ff;
+            color: #d0d0e0;
             font-size: 0.95rem;
         }
 
@@ -383,11 +358,11 @@
 
         /* Sinopsis section */
         .synopsis {
-            background: rgba(5, 15, 40, 0.85);
+            background: rgba(15, 5, 30, 0.8);
             border-radius: 20px;
             padding: 40px;
             margin-top: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             border-left: 5px solid #ff4500;
             animation: slideInRight 1.5s ease-out;
         }
@@ -419,7 +394,7 @@
         .synopsis-text {
             line-height: 1.8;
             font-size: 1.1rem;
-            color: #e0f0ff;
+            color: #e0e0ff;
             text-align: justify;
         }
 
@@ -457,7 +432,7 @@
         footer {
             text-align: center;
             padding: 30px;
-            color: #a0c0e0;
+            color: #a0a0c0;
             font-size: 0.9rem;
             border-top: 1px solid rgba(255, 165, 0, 0.3);
             margin-top: 50px;
@@ -516,7 +491,7 @@
                 height: 35px;
             }
             
-            .ship-name, .section-title {
+            .character-name, .section-title {
                 font-size: 1.8rem;
             }
             
@@ -534,12 +509,8 @@
         <span>Kembali ke Home</span>
     </a>
 
-    <!-- Ombak animasi di latar belakang -->
-    <div class="wave-particles">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-    </div>
+    <!-- Partikel animasi di latar belakang -->
+    <div class="particles" id="particles"></div>
 
     <div class="container">
         <header>
@@ -547,22 +518,22 @@
                 <i class="fas fa-skull-crossbones"></i>
             </div>
             <h1 class="logo">ONE PIECE</h1>
-            <p class="subtitle">Lokasi Nyata yang Menginspirasi Petualangan Bajak Laut Topi Jerami</p>
+            <p class="subtitle">Lokasi Nyata di Jepang yang Menginspirasi Dunia One Piece</p>
         </header>
 
         <div class="main-content">
-            <!-- Kapal Thousand Sunny (kiri) -->
-            <div class="main-ship">
-                <div class="ship-card">
-                    <img src="https://images7.alphacoders.com/134/thumb-1920-1348149.png" alt="Thousand Sunny" class="ship-img">
+            <!-- Karakter utama (kiri) -->
+            <div class="main-character">
+                <div class="character-card">
+                    <img src="https://images7.alphacoders.com/134/1348149.png" alt="Monkey D. Luffy" class="character-img">
                     <div class="location-caption">"Saya akan menjadi Raja Bajak Laut!" - Monkey D. Luffy</div>
-                    <div class="ship-info">
-                        <h2 class="ship-name">Thousand Sunny</h2>
-                        <p class="ship-title">Kapal Kelompok Bajak Laut Topi Jerami</p>
-                        <p class="ship-desc">
-                            Kapal kedua Kelompok Bajak Laut Topi Jerami yang dibangun oleh Franky setelah Going Merry tidak bisa diperbaiki lagi. 
-                            Thousand Sunny dilengkapi dengan berbagai fitur canggih seperti Gaon Cannon, Coup de Burst, dan ruangan khusus untuk setiap anggota kru.
-                            Kapal ini menjadi saksi petualangan menuju akhir Grand Line dan pencarian One Piece.
+                    <div class="character-info">
+                        <h2 class="character-name">Monkey D. Luffy</h2>
+                        <p class="character-title">Kapten Bajak Laut Topi Jerami - Pemakan Buah Gomu Gomu</p>
+                        <p class="character-desc">
+                            Seorang bajak laut muda dengan tekad baja yang ingin menjadi Raja Bajak Laut setelah terinspirasi oleh Shanks.
+                            Dengan kekuatan Buah Iblis Gomu Gomu, Luffy memiliki tubuh yang elastis seperti karet. Meskipun sering ceroboh,
+                            dia memiliki hati yang tulus dan akan melakukan apa saja untuk melindungi teman-temannya dalam perjalanan mencari One Piece.
                         </p>
                     </div>
                 </div>
@@ -570,89 +541,90 @@
 
             <!-- 4 Lokasi samping (kanan) -->
             <div class="side-locations">
-                <!-- Lokasi 1: Kastil Osaka -->
+                <!-- Lokasi 1: Kumamoto Castle -->
                 <div class="location-card">
                     <div class="location-img-container">
                         <span class="location-badge">Wano Kuni</span>
-                        <img src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kastil Osaka" class="location-img">
+                        <img src="https://images.unsplash.com/photo-1598974357801-cbca100e5d10?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kumamoto Castle" class="location-img">
                     </div>
                     <div class="location-info">
-                        <h3 class="location-name"><i class="fas fa-landmark"></i> Kastil Osaka, Jepang</h3>
+                        <h3 class="location-name"><i class="fas fa-landmark"></i> Kumamoto Castle, Kumamoto</h3>
                         <p class="location-desc">
-                            Menginspirasi desain <span class="location-highlight">Kastil di Wano Kuni</span>, negeri samurai tertutup yang dikunjungi 
-                            Luffy dan kawan-kawan. Arsitektur tradisional Jepang dengan menara utama yang megah menjadi ciri khas lokasi ini.
+                            Menginspirasi desain <span class="location-highlight">Kastil di Wano Kuni</span>, negeri samurai tertutup.
+                            Kastil Kumamoto yang megah dengan arsitektur tradisional Jepang menjadi referensi visual utama untuk latar belakang Wano.
                         </p>
                     </div>
-                    <div class="location-caption">Inspirasi untuk Kastil di Wano Country (arc Wano Kuni). Arsitektur tradisional Jepang.</div>
+                    <div class="location-caption">Inspirasi untuk Kastil di Wano Country (arc Wano Kuni). Salah satu dari 3 kastil terindah di Jepang.</div>
                 </div>
                 
-                <!-- Lokasi 2: Venice, Italia -->
+                <!-- Lokasi 2: Kanazawa -->
                 <div class="location-card">
                     <div class="location-img-container">
-                        <span class="location-badge">Water 7</span>
-                        <img src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Venice, Italia" class="location-img">
+                        <span class="location-badge">Samurai</span>
+                        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kanazawa" class="location-img">
                     </div>
                     <div class="location-info">
-                        <h3 class="location-name"><i class="fas fa-water"></i> Venice, Italia</h3>
+                        <h3 class="location-name"><i class="fas fa-kaaba"></i> Kanazawa, Ishikawa</h3>
                         <p class="location-desc">
-                            Inspirasi utama untuk <span class="location-highlight">Water 7</span>, kota kanal terkenal di dunia One Piece 
-                            tempat Galley-La Company berada dan Thousand Sunny dibangun. Sistem transportasi utama menggunakan kanal.
+                            Kota bersejarah yang dikenal dengan distrik samurai Nagamachi dan budaya tradisionalnya.
+                            Menjadi inspirasi untuk <span class="location-highlight">budaya samurai di Wano Kuni</span> dengan atmosfer zaman Edo yang terpelihara.
                         </p>
                     </div>
-                    <div class="location-caption">Inspirasi untuk Water 7 (kota kanal). Spot: kanal, gondola, arsitektur Renaissance.</div>
+                    <div class="location-caption">Inspirasi untuk budaya samurai di Wano. Distrik Nagamachi dengan rumah-rumah samurai tradisional.</div>
                 </div>
                 
-                <!-- Lokasi 3: Santorini, Yunani -->
+                <!-- Lokasi 3: Pulau Kyushu -->
                 <div class="location-card">
                     <div class="location-img-container">
-                        <span class="location-badge">Whole Cake Island</span>
-                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Santorini, Yunani" class="location-img">
+                        <span class="location-badge">Lokasi Penulis</span>
+                        <img src="https://images.unsplash.com/photo-1578632749014-ca77efd1eb02?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kyushu" class="location-img">
                     </div>
                     <div class="location-info">
-                        <h3 class="location-name"><i class="fas fa-ice-cream"></i> Santorini, Yunani</h3>
+                        <h3 class="location-name"><i class="fas fa-mountain"></i> Pulau Kyushu</h3>
                         <p class="location-desc">
-                            Menginspirasi beberapa elemen <span class="location-highlight">Whole Cake Island</span>, pulau yang diperintah oleh 
-                            Charlotte Linlin (Big Mom). Bangunan putih dengan kubah biru dan pemandangan laut yang indah menjadi ciri khasnya.
+                            Kampung halaman Eiichiro Oda, pencipta One Piece. Banyak elemen dari <span class="location-highlight">Kyushu</span> 
+                            yang mempengaruhi dunia One Piece, termasuk nama karakter dan lokasi yang terinspirasi dari tempat-tempat di sini.
                         </p>
                     </div>
-                    <div class="location-caption">Inspirasi untuk Whole Cake Island (Big Mom's territory). Arsitektur khas Mediterania.</div>
+                    <div class="location-caption">Kampung halaman Eiichiro Oda. Banyak inspirasi One Piece berasal dari tempat ini.</div>
                 </div>
                 
-                <!-- Lokasi 4: Piramida Mesir -->
+                <!-- Lokasi 4: Kota Kochi -->
                 <div class="location-card">
                     <div class="location-img-container">
-                        <span class="location-badge">Alabasta</span>
-                        <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Piramida Mesir" class="location-img">
+                        <span class="location-badge">Asal Karakter</span>
+                        <img src="https://images.unsplash.com/photo-1523059623039-a9ed027e7fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kochi" class="location-img">
                     </div>
                     <div class="location-info">
-                        <h3 class="location-name"><i class="fas fa-monument"></i> Piramida Giza, Mesir</h3>
+                        <h3 class="location-name"><i class="fas fa-water"></i> Kota Kochi, Shikoku</h3>
                         <p class="location-desc">
-                            Inspirasi untuk berbagai struktur di <span class="location-highlight">Kerajaan Alabasta</span>, terutama 
-                            reruntuhan dan makam kuno yang muncul dalam arc Alabasta. Nuansa padang pasir dan arsitektur Mesir kuno terasa kuat.
+                            Kota kelahiran Eiichiro Oda yang memberikan banyak inspirasi untuk karakter dan setting One Piece.
+                            <span class="location-highlight">Taman Katsurahama</span> dan budaya lokal mempengaruhi elemen-elemen dalam cerita.
                         </p>
                     </div>
-                    <div class="location-caption">Inspirasi untuk struktur kuno di Alabasta (arc Alabasta). Nuansa padang pasir dan piramida.</div>
+                    <div class="location-caption">Kota kelahiran Eiichiro Oda. Taman Katsurahama dan budaya lokal Kochi mempengaruhi One Piece.</div>
                 </div>
             </div>
         </div>
 
         <!-- Sinopsis Section -->
         <div class="synopsis">
-            <h2 class="section-title"><i class="fas fa-map"></i> Dunia Nyata dalam Petualangan One Piece</h2>
+            <h2 class="section-title"><i class="fas fa-scroll"></i> Inspirasi Jepang dalam One Piece</h2>
             <p class="synopsis-text">
-                <span class="highlight">One Piece</span> karya Eiichiro Oda terkenal dengan dunia yang luas dan beragam, yang banyak diinspirasi oleh 
-                <span class="highlight">lokasi nyata di dunia kita</span>. Oda menggabungkan elemen budaya, arsitektur, dan geografi dari berbagai negara 
-                untuk menciptakan pulau-pulau unik di Grand Line yang masing-masing memiliki karakteristik berbeda.
+                <span class="highlight">One Piece</span> karya Eiichiro Oda tidak hanya menampilkan petualangan epik di lautan, tetapi juga 
+                <span class="highlight">terinspirasi kuat oleh budaya dan lokasi nyata di Jepang</span>. Sebagai mangaka asal Jepang, Oda banyak memasukkan 
+                elemen-elemen dari tanah airnya ke dalam dunia One Piece yang luas dan beragam.
                 <br><br>
-                <span class="highlight">Venice, Italia</span> dengan kanal-kanalnya yang indah menjadi inspirasi utama untuk <span class="highlight">Water 7</span>, 
-                kota galangan kapal yang penuh misteri. <span class="highlight">Kastil Osaka</span> memberikan nuansa tradisional Jepang yang kuat untuk 
-                <span class="highlight">Wano Kuni</span>, negeri samurai yang terisolasi. Keindahan <span class="highlight">Santorini, Yunani</span> 
-                tercermin dalam desain <span class="highlight">Whole Cake Island</span>, sementara keagungan <span class="highlight">Piramida Mesir</span> 
-                menginspirasi struktur kuno di <span class="highlight">Kerajaan Alabasta</span>.
+                <span class="highlight">Kastil Kumamoto</span> yang megah menjadi referensi visual untuk <span class="highlight">Kastil di Wano Kuni</span>, 
+                negeri samurai yang terinspirasi oleh periode Edo Jepang. <span class="highlight">Kanazawa</span> dengan distrik samurai Nagamachi-nya 
+                memberikan atmosfer autentik untuk penggambaran budaya samurai dalam arc Wano.
                 <br><br>
-                Dengan menggabungkan inspirasi dari seluruh dunia, Oda menciptakan alam semesta One Piece yang kaya dan memikat, 
-                di mana setiap pulau menawarkan petualangan baru dan tantangan unik bagi Luffy dan Kelompok Bajak Laut Topi Jerami dalam 
-                perjalanan mereka menuju One Piece dan gelar Raja Bajak Laut.
+                <span class="highlight">Pulau Kyushu</span> dan <span class="highlight">Kota Kochi</span>, tempat Oda dilahirkan dan dibesarkan, memberikan 
+                banyak inspirasi lokal untuk karakter dan setting. Bahkan nama-nama karakter seperti Roronoa Zoro (terinspirasi dari François l'Olonnais) 
+                dan penggunaan terminologi bahasa Jepang dalam teknik pertarungan menunjukkan pengaruh budaya Jepang yang kuat.
+                <br><br>
+                Dengan menggabungkan inspirasi dari seluruh Jepang dengan imajinasi yang tak terbatas, Oda menciptakan dunia One Piece yang kaya dan memikat, 
+                di mana setiap pulau dan karakter membawa jejak budaya Jepang yang unik dalam petualangan menuju One Piece.
             </p>
         </div>
     </div>
@@ -667,7 +639,7 @@
         <div class="op-stamp">
             <i class="fas fa-anchor"></i>
         </div>
-        <p>One Piece Real World Locations © 2025 | Eksplorasi Dunia Nyata yang Menginspirasi Petualangan Luffy</p>
+        <p>One Piece - Lokasi Nyata di Jepang © 2025 | Eksplorasi Inspirasi Jepang dalam Petualangan Luffy</p>
         <p style="margin-top: 10px; font-size: 0.8rem; color: #888;">
             <i class="fas fa-music"></i> Backsound diputar otomatis | Klik ikon speaker di pojok kanan bawah untuk mute/unmute
         </p>
@@ -675,7 +647,7 @@
 
     <!-- Audio untuk backsound (tersembunyi) -->
     <audio id="backgroundAudio" loop autoplay>
-        <!-- Sumber audio dengan fallback -->
+        <!-- Sumber audio dengan fallback - TEMA ONE PIECE -->
         <source src="https://assets.codepen.io/1468070/one-piece-theme.mp3" type="audio/mpeg">
         <source src="one-piece.mp3" type="audio/mpeg">
         <!-- Fallback audio dari sumber lain jika yang pertama gagal -->
@@ -683,19 +655,38 @@
     </audio>
 
     <script>
-        // Inisialisasi efek ombak latar belakang
-        function initWaves() {
-            const waves = document.querySelectorAll('.wave');
-            waves.forEach((wave, index) => {
-                // Atur ukuran dan posisi acak untuk setiap ombak
-                const size = 40 + Math.random() * 20;
-                wave.style.width = `${size}%`;
-                wave.style.height = `${size}%`;
+        // Inisialisasi partikel latar belakang
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
                 
-                // Delay animasi yang berbeda untuk setiap ombak
-                const delay = index * 5;
-                wave.style.animationDelay = `${delay}s`;
-            });
+                // Ukuran acak
+                const size = Math.random() * 20 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Posisi acak
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Warna acak dengan tema One Piece
+                const colors = ['rgba(255, 165, 0, 0.5)', 'rgba(255, 69, 0, 0.5)', 'rgba(0, 150, 255, 0.5)'];
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Animasi dengan durasi acak
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Delay acak
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
         }
 
         // Kontrol audio TERSEMBUNYI
@@ -736,7 +727,6 @@
         window.addEventListener('load', function() {
             // Beri delay sedikit untuk memastikan halaman sudah siap
             setTimeout(tryPlayAudio, 500);
-            initWaves();
         });
         
         // Event listener untuk toggle audio mini
@@ -777,6 +767,8 @@
         
         // Inisialisasi saat halaman dimuat
         window.onload = function() {
+            createParticles();
+            
             // Efek tipe untuk sinopsis
             const synopsisText = document.querySelector('.synopsis-text');
             const originalText = synopsisText.textContent;
@@ -794,17 +786,23 @@
             // Mulai efek ketikan setelah delay
             setTimeout(typeWriter, 1000);
             
-            // Efek badge berkedip
+            // Efek badge berkedip dengan tema One Piece
             setInterval(() => {
                 document.querySelectorAll('.location-badge').forEach(badge => {
                     const colors = [
-                        'rgba(255, 69, 0, 0.9)',
-                        'rgba(255, 165, 0, 0.9)',
-                        'rgba(0, 150, 255, 0.9)'
+                        'rgba(255, 69, 0, 0.8)',
+                        'rgba(255, 165, 0, 0.8)',
+                        'rgba(0, 150, 255, 0.8)'
                     ];
                     badge.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 });
             }, 2000);
+            
+            // Animasi bendera bajak laut
+            const flag = document.querySelector('.pirate-flag');
+            setInterval(() => {
+                flag.style.transform = `translateY(${Math.sin(Date.now() / 500) * 15}px) rotate(${Math.sin(Date.now() / 700) * 5}deg)`;
+            }, 50);
         };
         
         // Efek parallax scroll
@@ -812,7 +810,7 @@
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.3;
             
-            document.querySelector('.main-ship').style.transform = `translateY(${rate}px) rotate(1deg)`;
+            document.querySelector('.main-character').style.transform = `translateY(${rate}px)`;
             
             // Efek parallax untuk kartu lokasi
             document.querySelectorAll('.location-card').forEach((card, index) => {
@@ -820,10 +818,10 @@
                 card.style.transform = `translateY(${rate * speed}px) scale(1)`;
             });
             
-            // Efek pada ombak
-            document.querySelectorAll('.wave').forEach((wave, index) => {
-                const waveSpeed = 0.05 + (index * 0.02);
-                wave.style.transform = `rotate(${scrolled * waveSpeed}deg)`;
+            // Efek pada partikel
+            document.querySelectorAll('.particle').forEach((particle, index) => {
+                const particleSpeed = 0.05 + (index * 0.001);
+                particle.style.transform = `translateY(${scrolled * particleSpeed}px) rotate(${scrolled * 0.1}deg)`;
             });
         });
         
@@ -834,25 +832,15 @@
             }
         });
         
-        // Animasi untuk kapal (mengapung)
-        function animateShip() {
-            const ship = document.querySelector('.main-ship');
-            let floatDirection = 1;
-            let floatAmount = 0;
-            
-            setInterval(() => {
-                floatAmount += 0.5 * floatDirection;
-                
-                if (floatAmount > 15 || floatAmount < 0) {
-                    floatDirection *= -1;
-                }
-                
-                ship.style.transform = `translateY(${floatAmount}px) rotate(${floatAmount * 0.05}deg)`;
-            }, 100);
-        }
+        // Efek hover untuk karakter utama
+        const characterCard = document.querySelector('.character-card');
+        characterCard.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) rotate(1deg)';
+        });
         
-        // Mulai animasi kapal
-        setTimeout(animateShip, 2000);
+        characterCard.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) rotate(0deg)';
+        });
     </script>
 </body>
 </html>
